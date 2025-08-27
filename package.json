@@ -1,0 +1,33 @@
+{
+  "name": "memoris",
+  "version": "1.0.0",
+  "description": "language learning app",
+  "keywords": [
+    "memorise",
+    "words",
+    "language",
+    "learning"
+  ],
+  "homepage": "https://github.com/yasinenis/MemoriseApp#readme",
+  "bugs": {
+    "url": "https://github.com/yasinenis/MemoriseApp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yasinenis/MemoriseApp.git"
+  },
+  "license": "ISC",
+  "author": "Yasin Eniş",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
+  }
+}
