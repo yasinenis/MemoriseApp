@@ -39,7 +39,7 @@
                           <td><%= words[i].progress %></td>
                           <td>Movies</td>
                           <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</button></td>
-                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</button></td>
+                          <td><a href="/words/delete/<%= words[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a></td>
                         </tr>
                     <% } %>
                     </tbody>

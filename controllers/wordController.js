@@ -25,3 +25,15 @@ export async function createWord(req, res) {
     });
   }
 }
+
+export async function deleteWord(req, res) {
+  try {
+    const word = await Word.findOneAndDelete({ _id: req.params.id });
+    res.status(201).redirect('/words');
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
