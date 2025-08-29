@@ -10,7 +10,7 @@
                     <h2 class="ms-2">Words</h2> 
                     <div class="d-flex">
                         <input type="text" placeholder="Search.." class="search-bar"><button class="btn btn-warning rounded-0"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <button class="btn btn-success btn-sm me-2 ms-2"><i class="fa-solid fa-plus"></i> New Word</button>
+                        <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm me-2 ms-2"><i class="fa-solid fa-plus"></i> New Word</button>
                     </div> 
                 </div>
                 
@@ -29,28 +29,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <% for(let i=0; i< words.length; i++) { %>
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Take</td>
-                          <td>Almak</td>
-                          <td>verb</td>
-                          <td>au:</td>
-                          <td>Good</td>
+                          <th scope="row"><%= i+1 %></th>
+                          <td><%= words[i].word %></td>
+                          <td><%= words[i].meaning %></td>
+                          <td><%= words[i].partOfSpeech %></td>
+                          <td><%= words[i].phonetics %></td>
+                          <td><%= words[i].progress %></td>
                           <td>Movies</td>
                           <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</button></td>
                           <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</button></td>
                         </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>See</td>
-                          <td>Bakmak</td>
-                          <td>verb</td>
-                          <td>au:</td>
-                          <td>Good</td>
-                          <td>Books</td>
-                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</button></td>
-                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</button></td>
-                        </tr>
+                    <% } %>
                     </tbody>
                 </table>
             </div>
@@ -89,5 +80,33 @@
     </div>
 
     <%- include('partials/_footer'); %>
+
+    <!-- New Word Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-body p-3">
+                    <form method="POST" action="/words/addWord">
+                        <div class="d-flex flex-column justify-content-center p-3">
+                        <input type="text" name="word" placeholder="Word" class="mb-4 p-3">
+                        <input type="text" name="meaning" placeholder="Meaning" class="mb-4 p-3">
+                        <input type="text" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3">
+                        <input type="text" name="phonetics" placeholder="Phonetics" class="mb-4 p-2">
+                        <select type="text" name="list" placeholder="List" class="mb-4 p-3">
+                            <option>Not selected</option>
+                            <option value="">Movies</option>
+                            <option value="">Books</option>
+
+                        </select>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success rounded-0">ADD</button>
+                        </div>
+                    </form>
+                </div>
+            </div>     
+        </div>
+    </div>
 
 </body>
