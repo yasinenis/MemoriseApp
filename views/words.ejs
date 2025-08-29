@@ -1,0 +1,93 @@
+<%- include('partials/_header'); %>
+
+<body>
+    <%- include('partials/_navigation'); %>
+    div
+    <div class="container mt-5 mb-5 word-container">
+        <div class="row mt-5 justify-content-between">
+            <div class="col-8 word-border d-flex flex-column">
+                <div class="d-flex justify-content-between">
+                    <h2 class="ms-2">Words</h2> 
+                    <div class="d-flex">
+                        <input type="text" placeholder="Search.." class="search-bar"><button class="btn btn-warning rounded-0"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btn btn-success btn-sm me-2 ms-2"><i class="fa-solid fa-plus"></i> New Word</button>
+                    </div> 
+                </div>
+                
+                <table class="table table-hover mt-3">
+                    <thead class="table-success">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Word</th>
+                          <th scope="col">Mean</th>
+                          <th scope="col">Part of speech</th>
+                          <th scope="col">Phonetics</th>
+                          <th scope="col">Progress</th>
+                          <th scope="col">List</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Take</td>
+                          <td>Almak</td>
+                          <td>verb</td>
+                          <td>au:</td>
+                          <td>Good</td>
+                          <td>Movies</td>
+                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</button></td>
+                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>See</td>
+                          <td>Bakmak</td>
+                          <td>verb</td>
+                          <td>au:</td>
+                          <td>Good</td>
+                          <td>Books</td>
+                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</button></td>
+                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-3 word-border">
+                <div class="d-flex justify-content-between">
+                    <h2 class="ms-2">Lists</h2> 
+                    <button class="btn btn-warning btn-sm me-2"><i class="fa-solid fa-plus"></i> New List</button>
+                </div>
+                <table class="table table-hover mt-3">
+                    <thead class="table-warning">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Movies</td>
+                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i></button></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Books</td>
+                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/_footer'); %>
+
+</body>

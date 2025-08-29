@@ -1,6 +1,6 @@
 .menu-items {
     text-decoration: none;
-    color:#10B981;
+    color:white;
     font-weight: 400;
     letter-spacing: 1px;
     font-size:large
@@ -8,7 +8,6 @@
 
 .menu-items:hover {
     color: #10B981;
-    text-decoration:underline;
     text-underline-offset: 5px;
 }
 
@@ -16,7 +15,7 @@
     border: 1px solid white;
     padding: 5px;
     border-radius: 5px;
-    border-color: #10B981;
+    border-color: white;
 }
 
 .btn-collapse:hover {
@@ -31,14 +30,24 @@
 }
 
 nav {
-    border-bottom: 1px solid #10B981;
-    background-color: white;
+    background-color: #1f2937;
 }
 
 .my-hr {
     margin: 0;
     border: 0;
-    border-top: 1px solid black;
+    border-top: 5px solid black;
+}
+
+.word-border {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 50px;
+    background-color: white;
+    min-height: 67vh;
 }
 
 .my-border {
@@ -51,7 +60,11 @@ nav {
 
 .start-btn {
     width: 200px;
-    border-radius: 0px;
+    border-radius: 20px;
+}
+
+.search-bar {
+    padding-left: 10px;
 }
 
 body {

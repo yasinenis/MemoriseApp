@@ -1,6 +1,7 @@
 import express from 'express';
 
 import pageRoute from './routes/pageRoute.js';
+import userRoute from './routes/userRoute.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.static('public'));
 
 // Routes
 app.use('/', pageRoute);
+app.use('/users', userRoute);
 
 const port = 3000;
 
