@@ -15,3 +15,7 @@ export async function getWordsPage(req, res) {
     });
   }
 }
+
+export async function getRegisterPage(req, res) {
+  res.status(200).render('register');
+}

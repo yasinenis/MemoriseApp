@@ -25,12 +25,11 @@ const WordSchema = new Schema({
   phonetics: {
     type: String,
   },
-  /*
-  lists: {
+
+  category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Lists',
+    ref: 'Category',
   },
-  */
 });
 
 const Word = mongoose.model('Word', WordSchema);

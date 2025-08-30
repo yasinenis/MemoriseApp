@@ -1,0 +1,37 @@
+<%- include('partials/_header'); %>
+
+<body>
+
+    <%- include('partials/_navigation'); %>
+
+    <div class="container mt-5 mb-5" style="height: 80.5vh;">
+        <div class="row mt-5 align-items-center justify-content-center" style="height: 80vh;">
+            <div class="col-6 d-flex align-items-center justify-content-center">
+                <form class="auth-border" method="POST" action="/users/signup">
+                    <div>
+                        <h2 class="text-center auth-header">REGISTER</h2>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <input class="p-3 reg-input form-control" name="name" type="text" placeholder="Username">
+                    </div>
+                    <div class="mt-4">
+                        <input class="p-3 form-control reg-input" name="email" type="email" placeholder="Email">
+                    </div>
+                    <div class="mt-4">
+                        <input class="p-3 form-control reg-input" name="password" type="password" placeholder="Password">
+                    </div>
+                    <div class="mt-4">
+                        <input class="p-3 form-control reg-input" name="password2" type="password" placeholder="Confirm Password">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-warning mt-3 btn-lg rounded-1 reg-input">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/_footer'); %>
+
+</body>

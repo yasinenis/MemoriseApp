@@ -2,8 +2,11 @@ import express from 'express';
 
 import mongoose from 'mongoose';
 
+import methodOverride from 'method-override';
+
 import pageRoute from './routes/pageRoute.js';
 import wordRoute from './routes/wordRoute.js';
+import userRoute from './routes/userRoute.js';
 
 const app = express();
 
@@ -24,10 +27,12 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
 
 // Routes
 app.use('/', pageRoute);
 app.use('/words', wordRoute);
+app.use('/users', userRoute);
 
 const port = 3000;
 

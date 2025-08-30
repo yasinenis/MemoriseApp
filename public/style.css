@@ -39,6 +39,23 @@ nav {
     border-top: 5px solid black;
 }
 
+.reg-input {
+    min-width: 600px;
+}
+
+.auth-header {
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.auth-border {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 50px;
+    margin-bottom: 50px;
+    background-color: white;
+}
+
 .word-border {
     border: 1px solid black;
     border-radius: 10px;
