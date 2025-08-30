@@ -19,3 +19,7 @@ export async function getWordsPage(req, res) {
 export async function getRegisterPage(req, res) {
   res.status(200).render('register');
 }
+
+export async function getLoginPage(req, res) {
+  res.status(200).render('login');
+}
