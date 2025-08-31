@@ -9,8 +9,14 @@
             <a class="menu-items  small ms-3" href="/words">Words</a>
             <a class="menu-items  small ms-3" href="#">Dashboard</a>
             <a class="menu-items  small ms-3" href="#">Contact</a>
+        <% if(!userIN) { %>
             <a class="menu-items btn-collapse ms-3 small" href="/register">Register</a>
             <a class="menu-items btn-collapse ms-1 small" href="/login">Login</a>
+        <% } %>
+        <% if(userIN) { %>
+            <a class="menu-items btn-collapse ms-3 small"><i class="fa-solid fa-circle-user"></i> <%= username %></a>
+            <a class="menu-items btn-collapse ms-3 small" href="/users/logout">Logout</a>
+        <% } %>
         </div>
     </div>
 </nav>

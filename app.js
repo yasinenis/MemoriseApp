@@ -2,7 +2,15 @@ import express from 'express';
 
 import mongoose from 'mongoose';
 
+import session from 'express-session';
+
+import MongoStore from 'connect-mongo';
+
 import methodOverride from 'method-override';
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 import pageRoute from './routes/pageRoute.js';
 import wordRoute from './routes/wordRoute.js';
@@ -12,7 +20,7 @@ const app = express();
 
 // Connect DB
 mongoose
-  .connect('mongodb://localhost:27017/memoris-db')
+  .connect(process.env.DATABASE_URL)
   .then(() => {
     console.log('Database connected!');
   })
@@ -28,6 +36,21 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: 'false',
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.DATABASE_URL,
+    }),
+  })
+);
+app.use((req, res, next) => {
+  res.locals.userIN = req.session.userID;
+  res.locals.username = req.session.username;
+  next();
+});
 
 // Routes
 app.use('/', pageRoute);

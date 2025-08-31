@@ -4,9 +4,7 @@ import bcrypt from 'bcrypt';
 export async function createUser(req, res) {
   try {
     const user = await User.create(req.body);
-    res.status(201).json({
-      status: 'success',
-    });
+    res.status(201).redirect('/login');
   } catch (err) {
     res.status(400).json({
       status: 'fail',
@@ -38,14 +36,20 @@ export async function loginUser(req, res) {
     }
 
     // USER SESSION
+    req.session.userID = user._id;
+    req.session.username = user.name;
 
-    res.status(201).json({
-      status: 'success',
-    });
+    res.status(201).redirect('/');
   } catch (err) {
     res.status(400).json({
       status: 'fail',
       err,
     });
   }
+}
+
+export async function logoutUser(req, res) {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
 }
