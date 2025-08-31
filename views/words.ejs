@@ -3,9 +3,10 @@
 <body>
     <%- include('partials/_navigation'); %>
     div
-    <div class="container mt-5 mb-5 word-container">
-        <div class="row mt-5 justify-content-between">
-            <div class="col-8 word-border d-flex flex-column">
+    <div class="container mt-5 mb-5 word-container px-0">
+        <div class="row mt-5 justify-content-between px-0">
+            <!-- WORDS -->
+            <div class="col-8 word-border dashed-right border-end-0 rounded-end-0 d-flex flex-column">
                 <div class="d-flex justify-content-between">
                     <h2 class="ms-2">Words</h2> 
                     <div class="d-flex">
@@ -17,6 +18,7 @@
                 <table class="table table-hover mt-3">
                     <thead class="table-success">
                         <tr>
+                          <th> </th>
                           <th scope="col">#</th>
                           <th scope="col">Word</th>
                           <th scope="col">Mean</th>
@@ -25,21 +27,23 @@
                           <th scope="col">Progress</th>
                           <th scope="col">Category</th>
                           <th scope="col"></th>
-                          <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                     <% for(let i=0; i< words.length; i++) { %>
                         <tr>
+                          <td> </td>
                           <th scope="row"><%= i+1 %></th>
                           <td><%= words[i].word %></td>
                           <td><%= words[i].meaning %></td>
                           <td><%= words[i].partOfSpeech %></td>
                           <td><%= words[i].phonetics %></td>
                           <td><%= words[i].progress %></td>
-                          <td><%= words[i].category ? words[i].category.name : '-' %></td>
-                          <td><a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</a></td>
-                          <td><a href="/words/delete/<%= words[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a></td>
+                          <td><%= words[i].category ? words[i].category.name : "no category" %></td>
+                          <td>
+                            <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</a>
+                            <a href="/words/delete/<%= words[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
+                          </td>
                         </tr>
 
                         <!-- Edit Word Modal -->
@@ -54,8 +58,11 @@
                                             <input type="text" value="<%= words[i].partOfSpeech %>" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3">
                                             <input type="text" value="<%= words[i].phonetics %>" name="phonetics" placeholder="Phonetics" class="mb-4 p-2">
                                             <select type="text" name="category" placeholder="Category" class="mb-4 p-3">
-                                                <option value="words[i].category ? words[i].category.name : '--' %>"><%= words[i].category ? words[i].category.name : 'Not selected' %></option>
-                                                <option value="">Category 1</option>
+                                                <option value="words[i].category ? words[i].category._id : '--' %>"><%= words[i].category ? words[i].category.name : 'Not selected' %></option>
+                        
+                                                <% for(let j = 0; j< categories.length; j++) { %>
+                                                <option value="<%= categories[j]._id %>"><%= categories[j].name %></option>
+                                                <% } %>
 
                                             </select>
                                             </div>
@@ -71,35 +78,57 @@
                     <% } %>
                     </tbody>
                 </table>
+                <% if(!userIN) { %>
+                <h2 class="d-flex justify-content-center mt-5">You dont have permission here, Please sign in.</h2>
+                <% } %>
             </div>
-            <div class="col-3 word-border">
+
+            <!-- CATEGORIES -->
+            <div class="col-4 word-border dashed-left border-start-0 rounded-start-0">
                 <div class="d-flex justify-content-between">
-                    <h2 class="ms-2">Lists</h2> 
-                    <button class="btn btn-warning btn-sm me-2"><i class="fa-solid fa-plus"></i> New List</button>
+                    <h2 class="ms-2">Categories</h2> 
+                    <button data-bs-toggle="modal" data-bs-target="#newCategoryModal" class="btn btn-warning btn-sm me-2"><i class="fa-solid fa-plus"></i> New Category</button>
                 </div>
                 <table class="table table-hover mt-3">
                     <thead class="table-warning">
                         <tr>
+                          <th></th>
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col"></th>
-                          <th scope="col"></th>
-
                         </tr>
                     </thead>
                     <tbody>
+                        <% for(let i=0; i< categories.length; i++) { %>
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Movies</td>
-                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i></button></td>
+                          <td> </td>
+                          <th scope="row"><%= i+1 %></th>
+                          <td><%= categories[i].name %></td>
+                          <td>
+                            <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Edit</a>
+                            <a href="/words/deleteCategory/<%= categories[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
+                          </td>
                         </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Books</td>
-                          <td><button class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                          <td><button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i></button></td>
-                        </tr>
+
+                        <!-- Edit Category Modal -->
+                        <div class="modal fade" id="editCategoryModal-<%= categories[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content p-3">
+                                    <div class="modal-body p-3">
+                                        <form method="POST" action="/words/editCategory/<%= categories[i]._id %>?_method=PUT">
+                                            <div class="d-flex flex-column justify-content-center p-3">
+                                            <input type="text" value="<%= categories[i].name %>" name="name" placeholder="Category" class="mb-4 p-3">
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-warning rounded-0">UPDATE</button>
+                                                <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>     
+                            </div>
+                        </div>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
@@ -118,16 +147,34 @@
                         <input type="text" name="word" placeholder="Word" class="mb-4 p-3">
                         <input type="text" name="meaning" placeholder="Meaning" class="mb-4 p-3">
                         <input type="text" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3">
-                        <input type="text" name="phonetics" placeholder="Phonetics" class="mb-4 p-2">
-                        <select type="text" name="list" placeholder="List" class="mb-4 p-3">
-                            <option>Not selected</option>
-                            <option value="">Movies</option>
-                            <option value="">Books</option>
-
+                        <input type="text" name="phonetics" placeholder="Phonetics" class="mb-4 p-3">
+                        <select type="text" name="category" placeholder="Category" class="mb-4 p-3">
+                        <% for(let i = 0; i< categories.length; i++) { %>
+                            <option value="<%= categories[i]._id %>"><%= categories[i].name %></option>
+                        <% } %>
                         </select>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-success rounded-0">ADD</button>
+                            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>     
+        </div>
+    </div>
+
+    <!-- New Category Modal -->
+    <div class="modal fade" id="newCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-body p-3">
+                    <form method="POST" action="/words/addCategory">
+                        <div class="d-flex flex-column justify-content-center p-3">
+                            <input type="text" name="name" placeholder="New Category" class="mb-4 p-3">
+                        </div>
+                        <div>
+                            <button type="submit" class="ms-3 btn btn-warning rounded-0">ADD</button>
                             <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </form>

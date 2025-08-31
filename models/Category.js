@@ -5,6 +5,12 @@ const Schema = mongoose.Schema;
 const CategorySchema = new Schema({
   name: {
     type: String,
+    default: 'No Category',
+    set: (v) => (v === '' ? undefined : v),
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
   },
 });

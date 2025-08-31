@@ -56,17 +56,6 @@ nav {
     background-color: white;
 }
 
-.word-border {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 50px;
-    background-color: white;
-    min-height: 67vh;
-}
-
 .my-border {
     border: 1px solid black;
     border-radius: 20px;
@@ -103,4 +92,21 @@ footer {
 /* home */
 .back-span {
     color: #10B981;
+}
+
+/* words */
+
+.word-border {
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 50px;
+    background-color: white;
+    min-height: 67vh;
+}
+
+.dashed-left {
+    border-left: 2px dashed #1f2937 !important;
 }

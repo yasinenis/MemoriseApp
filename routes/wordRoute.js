@@ -10,6 +10,8 @@ router.route('/addWord').post(wordController.createWord);
 router.route('/delete/:id').get(wordController.deleteWord);
 router.route('/editWord/:id').put(wordController.editWord);
 
-router.route('/category').get(categoryController.createCategory);
+router.route('/addCategory').post(categoryController.createCategory);
+router.route('/deleteCategory/:id').get(categoryController.deleteCategory);
+router.route('/editCategory/:id').put(categoryController.editCategory);
 
 export default router;

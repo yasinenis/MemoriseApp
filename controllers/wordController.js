@@ -1,21 +1,58 @@
 import Word from '../models/Word.js';
+import Category from '../models/Category.js';
 
 export async function getWordsPage(req, res) {
-  const words = await Word.find().sort('-createdAt').populate('category');
   try {
+    const words = await Word.find({ user: req.session.userID })
+      .sort('-createdAt')
+      .populate('category');
+    const categories = await Category.find({ user: req.session.userID });
+
+    if (req.session.userID) {
+      // No Category
+      let noCategory = await Category.findOne({
+        user: req.session.userID,
+        name: 'Uncategorized',
+      });
+
+      if (!noCategory) {
+        noCategory = await Category.create({
+          user: req.session.userID,
+          name: 'Uncategorized',
+        });
+        categories.push(noCategory);
+      }
+
+      // No Category END
+    }
+
     res.status(200).render('words', {
       words,
+      categories,
     });
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      err,
+      err: err.message,
     });
   }
 }
 
 export async function createWord(req, res) {
-  const word = await Word.create(req.body);
+  const category = await Category.findOne({
+    _id: req.body.category,
+    user: req.session.userID,
+  });
+
+  const word = await Word.create({
+    word: req.body.word,
+    meaning: req.body.meaning,
+    partOfSpeech: req.body.partOfSpeech,
+    phonetics: req.body.phonetics,
+    category: category.id,
+    user: req.session.userID,
+  });
+
   try {
     res.status(201).redirect('/words');
   } catch (err) {
@@ -28,7 +65,17 @@ export async function createWord(req, res) {
 
 export async function deleteWord(req, res) {
   try {
-    const word = await Word.findOneAndDelete({ _id: req.params.id });
+    const word = await Word.findOneAndDelete({
+      _id: req.params.id,
+      user: req.session.userID,
+    });
+
+    if (!word) {
+      return res
+        .status(403)
+        .json({ error: 'Not authorized or word not found' });
+    }
+
     res.status(201).redirect('/words');
   } catch (err) {
     res.status(400).json({
@@ -40,11 +87,22 @@ export async function deleteWord(req, res) {
 
 export async function editWord(req, res) {
   try {
-    const word = await Word.findOne({ _id: req.params.id });
+    const word = await Word.findOne({
+      _id: req.params.id,
+      user: req.session.userID,
+    });
+
+    if (!word) {
+      return res
+        .status(403)
+        .json({ error: 'Not authorized or word not found' });
+    }
+
     word.word = req.body.word;
     word.meaning = req.body.meaning;
     word.partOfSpeech = req.body.partOfSpeech;
     word.phonetics = req.body.phonetics;
+    word.category = req.body.category;
     await word.save();
     res.status(201).redirect('/words');
   } catch (err) {
