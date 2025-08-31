@@ -6,10 +6,12 @@ export async function getWordsPage(req, res) {
     const words = await Word.find({ user: req.session.userID })
       .sort('-createdAt')
       .populate('category');
-    const categories = await Category.find({ user: req.session.userID });
+    const categories = await Category.find({ user: req.session.userID }).sort(
+      'createdAt'
+    );
 
+    // No Category Creation
     if (req.session.userID) {
-      // No Category
       let noCategory = await Category.findOne({
         user: req.session.userID,
         name: 'Uncategorized',
@@ -22,7 +24,6 @@ export async function getWordsPage(req, res) {
         });
         categories.push(noCategory);
       }
-
       // No Category END
     }
 

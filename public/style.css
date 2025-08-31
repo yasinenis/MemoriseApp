@@ -110,3 +110,7 @@ footer {
 .dashed-left {
     border-left: 2px dashed #1f2937 !important;
 }
+
+.point-it {
+    cursor: pointer;
+}

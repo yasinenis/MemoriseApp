@@ -1,4 +1,5 @@
 import Category from '../models/Category.js';
+import Word from '../models/Word.js';
 
 export async function createCategory(req, res) {
   const category = await Category.create({
@@ -18,10 +19,29 @@ export async function createCategory(req, res) {
 
 export async function deleteCategory(req, res) {
   try {
+    const newCategoryName = await Category.findOne({
+      name: 'Uncategorized',
+      user: req.session.userID,
+    });
+
+    const oldCategoryId = req.params.id;
+
     const category = await Category.findOneAndDelete({
       _id: req.params.id,
       user: req.session.userID,
     });
+
+    if (!newCategoryName) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Unauthorized category did not found!',
+      });
+    }
+
+    await Word.updateMany(
+      { category: oldCategoryId, user: req.session.userID },
+      { $set: { category: newCategoryName._id } }
+    );
 
     if (!category) {
       return res
@@ -33,7 +53,7 @@ export async function deleteCategory(req, res) {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      err,
+      err: err.message,
     });
   }
 }

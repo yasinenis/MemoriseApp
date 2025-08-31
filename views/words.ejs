@@ -57,11 +57,9 @@
                                             <input type="text" value="<%= words[i].meaning %>" name="meaning" placeholder="Meaning" class="mb-4 p-3">
                                             <input type="text" value="<%= words[i].partOfSpeech %>" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3">
                                             <input type="text" value="<%= words[i].phonetics %>" name="phonetics" placeholder="Phonetics" class="mb-4 p-2">
-                                            <select type="text" name="category" placeholder="Category" class="mb-4 p-3">
-                                                <option value="words[i].category ? words[i].category._id : '--' %>"><%= words[i].category ? words[i].category.name : 'Not selected' %></option>
-                        
+                                            <select type="text" name="category" placeholder="Category" class="mb-4 p-3">                        
                                                 <% for(let j = 0; j< categories.length; j++) { %>
-                                                <option value="<%= categories[j]._id %>"><%= categories[j].name %></option>
+                                                <option <%= words[i].category._id.equals(categories[j]._id) ? "selected" : " " %> value="<%= categories[j]._id %>"><%= categories[j].name %></option>
                                                 <% } %>
 
                                             </select>
@@ -100,13 +98,15 @@
                     </thead>
                     <tbody>
                         <% for(let i=0; i< categories.length; i++) { %>
-                        <tr>
+                        <tr class="point-it">
                           <td> </td>
                           <th scope="row"><%= i+1 %></th>
                           <td><%= categories[i].name %></td>
                           <td>
+                        <% if(categories[i].name !== 'Uncategorized') { %>
                             <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Edit</a>
                             <a href="/words/deleteCategory/<%= categories[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
+                        <% } %>
                           </td>
                         </tr>
 
