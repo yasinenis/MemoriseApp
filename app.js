@@ -15,6 +15,7 @@ dotenv.config();
 import pageRoute from './routes/pageRoute.js';
 import wordRoute from './routes/wordRoute.js';
 import userRoute from './routes/userRoute.js';
+import learnRoute from './routes/learnRoute.js';
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
 app.use('/', pageRoute);
 app.use('/words', wordRoute);
 app.use('/users', userRoute);
+app.use('/learn', learnRoute);
 
 const port = 3000;
 

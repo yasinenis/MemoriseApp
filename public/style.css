@@ -119,3 +119,11 @@ footer {
     background-color:#10B981;
     color: white;
 }
+
+/* learn page */
+.inter-my {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:300;
+  font-style: normal;
+}
