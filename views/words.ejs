@@ -10,7 +10,9 @@
                 <div class="d-flex justify-content-between">
                     <h2 class="ms-2">Words</h2> 
                     <div class="d-flex">
-                        <input type="text" placeholder="Search.." class="search-bar"><button class="btn btn-warning rounded-0"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <form method="GET" action="/words">
+                            <input type="text" name="searchWord" value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" placeholder="Search.." class="search-bar"><button type="submit" class="btn btn-warning rounded-0 btn-sm rounded-end-2"><i class="fa-solid fa-magnifying-glass small"></i></button>
+                        </form>
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm me-2 ms-2"><i class="fa-solid fa-plus"></i> New Word</button>
                     </div> 
                 </div>
@@ -41,7 +43,7 @@
                           <td class="text-success"><%= words[i].progress %></td>
                           <td class="text-success"><%= words[i].category ? words[i].category.name : "no category" %></td>
                           <td>
-                            <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</a>
+                            <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Update</a>
                             <a href="/words/delete/<%= words[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
                           </td>
                         </tr>
@@ -115,7 +117,7 @@
                           </td>
                           <td>
                             <% if(categories[i].name !== 'Uncategorized') { %>
-                            <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Edit</a>
+                            <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Update</a>
                             <a href="/words/deleteCategory/<%= categories[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
                             <% } %>
                           </td>

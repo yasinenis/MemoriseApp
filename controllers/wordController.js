@@ -3,17 +3,31 @@ import Category from '../models/Category.js';
 
 export async function getWordsPage(req, res) {
   try {
+    // query
+    const query = req.query.searchWord;
+    // query--
+    // filter
     const categorySlug = req.query.categories;
-    const category = await Category.findOne({
-      slug: categorySlug,
-      user: req.session.userID,
-    });
+    let category = null;
+    if (categorySlug) {
+      category = await Category.findOne({
+        slug: categorySlug,
+        user: req.session.userID,
+      });
+    }
 
     let filter = { user: req.session.userID };
 
     if (categorySlug && category) {
       filter.category = category._id;
     }
+    // filter end
+
+    // ..query
+    if (query && query.trim() !== '') {
+      filter.word = { $regex: query, $options: 'i' };
+    }
+    // query- end
 
     const words = await Word.find(filter)
       .sort('-createdAt')
@@ -42,6 +56,7 @@ export async function getWordsPage(req, res) {
     res.status(200).render('words', {
       words,
       categories,
+      searchQuery: query,
     });
   } catch (err) {
     res.status(400).json({
