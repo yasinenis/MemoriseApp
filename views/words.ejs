@@ -34,12 +34,12 @@
                         <tr>
                           <td> </td>
                           <th scope="row"><%= i+1 %></th>
-                          <td><%= words[i].word %></td>
-                          <td><%= words[i].meaning %></td>
-                          <td><%= words[i].partOfSpeech %></td>
-                          <td><%= words[i].phonetics %></td>
-                          <td><%= words[i].progress %></td>
-                          <td><%= words[i].category ? words[i].category.name : "no category" %></td>
+                          <td class="text-success"><%= words[i].word %></td>
+                          <td class="text-success"><%= words[i].meaning %></td>
+                          <td class="text-success"><%= words[i].partOfSpeech %></td>
+                          <td class="text-success"><%= words[i].phonetics %></td>
+                          <td class="text-success"><%= words[i].progress %></td>
+                          <td class="text-success"><%= words[i].category ? words[i].category.name : "no category" %></td>
                           <td>
                             <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</a>
                             <a href="/words/delete/<%= words[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
@@ -97,16 +97,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class="point-it">
+                          <td> </td>
+                          <th scope="row">1</th>
+                          <td>
+                            <a class="text-decoration-none text-warning-emphasis underline" href="/words">All Categories</a>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
                         <% for(let i=0; i< categories.length; i++) { %>
                         <tr class="point-it">
                           <td> </td>
-                          <th scope="row"><%= i+1 %></th>
-                          <td><%= categories[i].name %></td>
+                          <th scope="row"><%= i+2 %></th>
                           <td>
-                        <% if(categories[i].name !== 'Uncategorized') { %>
+                            <a class="text-decoration-none text-warning-emphasis underline" href="/words/?categories=<%= categories[i].slug %>"><%= categories[i].name %></a>
+                          </td>
+                          <td>
+                            <% if(categories[i].name !== 'Uncategorized') { %>
                             <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Edit</a>
                             <a href="/words/deleteCategory/<%= categories[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
-                        <% } %>
+                            <% } %>
                           </td>
                         </tr>
 

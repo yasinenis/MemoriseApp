@@ -3,11 +3,23 @@ import Category from '../models/Category.js';
 
 export async function getWordsPage(req, res) {
   try {
-    const words = await Word.find({ user: req.session.userID })
+    const categorySlug = req.query.categories;
+    const category = await Category.findOne({
+      slug: categorySlug,
+      user: req.session.userID,
+    });
+
+    let filter = { user: req.session.userID };
+
+    if (categorySlug && category) {
+      filter.category = category._id;
+    }
+
+    const words = await Word.find(filter)
       .sort('-createdAt')
       .populate('category');
     const categories = await Category.find({ user: req.session.userID }).sort(
-      'createdAt'
+      '-createdAt'
     );
 
     // No Category Creation

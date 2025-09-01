@@ -2,13 +2,15 @@ import express from 'express';
 
 import * as wordController from '../controllers/wordController.js';
 import * as categoryController from '../controllers/categoryController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').get(wordController.getWordsPage); // localhost:3000/words
+router.route('/').get(authMiddleware, wordController.getWordsPage); // localhost:3000/words
 router.route('/addWord').post(wordController.createWord);
 router.route('/delete/:id').get(wordController.deleteWord);
 router.route('/editWord/:id').put(wordController.editWord);
+router.route('/:slug').get(wordController.getWordsPage);
 
 router.route('/addCategory').post(categoryController.createCategory);
 router.route('/deleteCategory/:id').get(categoryController.deleteCategory);

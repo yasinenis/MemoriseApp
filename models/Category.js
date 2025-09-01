@@ -1,6 +1,8 @@
 import { _arrayUnique } from 'chart.js/helpers';
 import mongoose from 'mongoose';
 
+import slugify from 'slugify';
+
 const Schema = mongoose.Schema;
 
 const CategorySchema = new Schema({
@@ -13,6 +15,9 @@ const CategorySchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
+  },
+  slug: {
+    type: String,
     unique: true,
   },
   createdAt: {
@@ -20,6 +25,16 @@ const CategorySchema = new Schema({
     default: Date.now,
   },
 });
+
+CategorySchema.pre('validate', function (next) {
+  this.slug = slugify(this.name, {
+    lower: true,
+    strict: true,
+  });
+  next();
+});
+
+CategorySchema.index({ slug: 1, user: 1 }, { unique: true });
 
 const Category = mongoose.model('Category', CategorySchema);
 

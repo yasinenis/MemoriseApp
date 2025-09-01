@@ -1,6 +1,5 @@
 import User from '../models/User.js';
 import bcrypt from 'bcrypt';
-import Category from '../models/User.js';
 
 export async function createUser(req, res) {
   try {
