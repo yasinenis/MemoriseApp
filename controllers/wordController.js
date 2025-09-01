@@ -57,6 +57,7 @@ export async function getWordsPage(req, res) {
       words,
       categories,
       searchQuery: query,
+      categorySlug,
     });
   } catch (err) {
     res.status(400).json({

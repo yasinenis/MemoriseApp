@@ -114,3 +114,8 @@ footer {
 .point-it {
     cursor: pointer;
 }
+
+.categoryActive {
+    background-color:#10B981;
+    color: white;
+}

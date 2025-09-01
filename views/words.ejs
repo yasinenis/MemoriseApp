@@ -93,15 +93,13 @@
                     <thead class="table-warning">
                         <tr>
                           <th></th>
-                          <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="point-it">
-                          <td> </td>
-                          <th scope="row">1</th>
+                          <td><i class="<%= categorySlug === undefined && 'fa-solid fa-angle-right' %>"></i></td>
                           <td>
                             <a class="text-decoration-none text-warning-emphasis underline" href="/words">All Categories</a>
                           </td>
@@ -110,8 +108,7 @@
                         </tr>
                         <% for(let i=0; i< categories.length; i++) { %>
                         <tr class="point-it">
-                          <td> </td>
-                          <th scope="row"><%= i+2 %></th>
+                          <td><i class="<%= categorySlug === categories[i].slug && 'fa-solid fa-angle-right' %>"></i></td>
                           <td>
                             <a class="text-decoration-none text-warning-emphasis underline" href="/words/?categories=<%= categories[i].slug %>"><%= categories[i].name %></a>
                           </td>
