@@ -127,3 +127,41 @@ footer {
   font-weight:300;
   font-style: normal;
 }
+
+.heigh {
+    height: 829px;
+}
+
+.word-card {
+    height: 400px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.word-card-word {
+    height: 350px;
+}
+
+.word-btn {
+    padding-left: 105px;
+    padding-right: 105px;
+    border-radius: 0px;
+    margin: 0px;
+}
+.word-btn:hover {
+    border: 1px solid #1F2937;
+}
+
+.quicksand-300 {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.quicksand-500 {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
