@@ -5,6 +5,10 @@ import authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').get(authMiddleware, learnController.getLearnPage); // localhost:3000/
+router.route('/').get(authMiddleware, learnController.getLearnPage); // localhost:3000/learn
+router
+  .route('/remembered/:id')
+  .get(authMiddleware, learnController.rememberedWord);
+router.route('/forgot/:id').get(authMiddleware, learnController.forgotWord);
 
 export default router;

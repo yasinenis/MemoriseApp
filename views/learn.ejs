@@ -8,12 +8,21 @@
                 <div class="col-12">
                     <div class="row justify-content-center">
                         <div class="col-6 d-flex flex-column justify-content-center bg-white word-card">
-                            <div class="d-flex justify-content-center align-items-center word-card-word">
-                                <h2 class="quicksand-500">could</h2>
+                            <div class="mt1">
+                                <i class="fa-solid fa-bookmark ms-3"></i><span> <%= wordNeedStudy ? wordNeedStudy.category.name : '' %></span>
                             </div>
+                            <div class="word-card-in">
+                                <div class="d-flex justify-content-center align-items-center word-card-word point-it word-front">
+                                    <h2 class="quicksand-500"><%= wordNeedStudy ? wordNeedStudy.word : 'All Done ╰(*°▽°*)╯' %></h2>
+                                </div>
+                                <div class="d-flex d-none justify-content-center align-items-center word-card-word point-it word-back">
+                                    <h2 class="quicksand-500"><%= wordNeedStudy ? wordNeedStudy.meaning : 'All Done ╰(*°▽°*)╯' %></h2>
+                                </div>
+                            </div>
+                            
                             <div class="d-flex justify-content-center justify-content-around">
-                                <button class="btn word-btn"><i class="fa-solid fa-rotate-left"></i> Forgot</button>
-                                <button class="btn word-btn"><i class="fa-solid fa-check"></i></i> Remembered</button>
+                                <a href="<%= wordNeedStudy ? '/learn/' : '' %><%= wordNeedStudy ? 'forgot/' : '' %><%= wordNeedStudy ? wordNeedStudy._id : '' %>" class="btn <%= wordNeedStudy ? 'word-btn' : '' %>"><i class="<%= wordNeedStudy ? 'fa-solid fa-rotate-left' : '' %>"></i></i> <%= wordNeedStudy ? 'Forgot' : '' %></a>
+                                <a href="/<%= wordNeedStudy ? 'learn/' : 'words' %><%= wordNeedStudy ? 'remembered/' : '' %><%= wordNeedStudy ? wordNeedStudy._id : '' %>" class="btn word-btn"><i class="<%= wordNeedStudy ? 'fa-solid fa-check' : 'fa-solid fa-plus' %>"></i></i> <%= wordNeedStudy ? 'remembered' : 'Add Word' %></a>
                             </div>
                         </div>
                     </div>
@@ -21,6 +30,6 @@
             </div>
         </div>
     </div>
-    <%- include('partials/_footer'); %>
 
-</body>
+    <%- include('partials/_footer'); %>
+    <script src="/learn.js"></script>

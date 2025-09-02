@@ -1,3 +1,18 @@
+/* fonts */
+.quicksand-300 {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.quicksand-500 {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
 .menu-items {
     text-decoration: none;
     color:white;
@@ -139,7 +154,7 @@ footer {
 }
 
 .word-card-word {
-    height: 350px;
+    height: 330px;
 }
 
 .word-btn {
@@ -152,16 +167,3 @@ footer {
     border: 1px solid #1F2937;
 }
 
-.quicksand-300 {
-  font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.quicksand-500 {
-  font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
