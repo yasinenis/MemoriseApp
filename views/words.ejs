@@ -3,10 +3,10 @@
 <body class="inter-my">
     <%- include('partials/_navigation'); %>
     div
-    <div class="container mt-5 mb-5 word-container px-0">
-        <div class="row mt-5 justify-content-between px-0">
+    <div class="container mt-5 word-container px-0">
+        <div class="row mt-2 justify-content-between px-0">
             <!-- WORDS -->
-            <div class="col-8 word-border dashed-right border-end-0 rounded-end-0 d-flex flex-column">
+            <div class="col-8 word-border dashed-right border-end-0 rounded-end-0 rounded-start-1 d-flex flex-column">
                 <div class="d-flex justify-content-between">
                     <h2 class="ms-2">Words</h2> 
                     <div class="d-flex">
@@ -14,6 +14,7 @@
                             <input type="text" name="searchWord" value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" placeholder="Search.." class="search-bar"><button type="submit" class="btn btn-warning rounded-0 btn-sm rounded-end-2"><i class="fa-solid fa-magnifying-glass small"></i></button>
                         </form>
                         <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-sm me-2 ms-2"><i class="fa-solid fa-plus"></i> New Word</button>
+                        <button class="me-3 wordEditHeadBtn btn btn-warning btn-sm">Edit Words</button>
                     </div> 
                 </div>
                 
@@ -42,9 +43,9 @@
                           <td class="text-success"><%= words[i].phonetics %></td>
                           <td class="text-success"><%= words[i].progress %></td>
                           <td class="text-success"><%= words[i].category ? words[i].category.name : "no category" %></td>
-                          <td>
-                            <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Update</a>
-                            <a href="/words/delete/<%= words[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
+                          <td class="py-1">
+                            <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="wordEditBtn d-none word-edit-btn-group btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Update</a>
+                            <a href="/words/delete/<%= words[i]._id %>" class="word-edit-btn-group wordDeleteBtn d-none btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
                           </td>
                         </tr>
 
@@ -84,10 +85,13 @@
             </div>
 
             <!-- CATEGORIES -->
-            <div class="col-4 word-border dashed-left border-start-0 rounded-start-0">
+            <div class="col-4 word-border dashed-left border-start-0 rounded-end-1 rounded-start-0">
                 <div class="d-flex justify-content-between">
                     <h2 class="ms-2">Categories</h2> 
-                    <button data-bs-toggle="modal" data-bs-target="#newCategoryModal" class="btn btn-warning btn-sm me-2"><i class="fa-solid fa-plus"></i> New Category</button>
+                    <div class="d-flex">
+                        <button data-bs-toggle="modal" data-bs-target="#newCategoryModal" class="btn bg-warning-subtle small-shadow btn-sm me-2"><i class="fa-solid fa-plus"></i> New Category</button>
+                        <button class="me-3 categoryEditHeadBtn btn btn-warning btn-sm">Edit Words</button>
+                    </div>
                 </div>
                 <table class="table table-hover mt-3">
                     <thead class="table-warning">
@@ -112,10 +116,10 @@
                           <td>
                             <a class="text-decoration-none text-warning-emphasis underline" href="/words/?categories=<%= categories[i].slug %>"><%= categories[i].name %></a>
                           </td>
-                          <td>
+                          <td class="py-1">
                             <% if(categories[i].name !== 'Uncategorized') { %>
-                            <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Update</a>
-                            <a href="/words/deleteCategory/<%= categories[i]._id %>" class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
+                            <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="categoryEditBtn d-none btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Update</a>
+                            <a href="/words/deleteCategory/<%= categories[i]._id %>" class="categoryDeleteBtn d-none btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
                             <% } %>
                           </td>
                         </tr>
@@ -146,6 +150,8 @@
     </div>
 
     <%- include('partials/_footer'); %>
+
+    <script src="/words.js"></script>
 
     <!-- New Word Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

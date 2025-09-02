@@ -21,7 +21,7 @@
                             </div>
                             
                             <div class="d-flex justify-content-center justify-content-around">
-                                <a href="<%= wordNeedStudy ? '/learn/' : '' %><%= wordNeedStudy ? 'forgot/' : '' %><%= wordNeedStudy ? wordNeedStudy._id : '' %>" class="btn <%= wordNeedStudy ? 'word-btn' : '' %>"><i class="<%= wordNeedStudy ? 'fa-solid fa-rotate-left' : '' %>"></i></i> <%= wordNeedStudy ? 'Forgot' : '' %></a>
+                                <a id="shakeBtn" href="<%= wordNeedStudy ? '/learn/' : '' %><%= wordNeedStudy ? 'forgot/' : '' %><%= wordNeedStudy ? wordNeedStudy._id : '' %>" class="btn <%= wordNeedStudy ? 'word-btn' : '' %>"><i class="<%= wordNeedStudy ? 'fa-solid fa-rotate-left' : '' %>"></i></i> <%= wordNeedStudy ? 'Forgot' : '' %></a>
                                 <a href="/<%= wordNeedStudy ? 'learn/' : 'words' %><%= wordNeedStudy ? 'remembered/' : '' %><%= wordNeedStudy ? wordNeedStudy._id : '' %>" class="btn word-btn"><i class="<%= wordNeedStudy ? 'fa-solid fa-check' : 'fa-solid fa-plus' %>"></i></i> <%= wordNeedStudy ? 'remembered' : 'Add Word' %></a>
                             </div>
                         </div>
