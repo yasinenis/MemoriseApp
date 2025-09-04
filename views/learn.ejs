@@ -5,7 +5,7 @@
     <div class="heigh d-flex align-items-center">
         <div class="container mt-5">
             <div class="row">
-                <div class="col-12"> <% const wordNeedStudy = wordsNeedStudy[0]; %>
+                <div class="col-12">
                     <div class="row justify-content-center">
                         <div class="col-6 d-flex flex-column justify-content-center bg-white word-card">
                             <div class="mt1">
@@ -21,9 +21,10 @@
                             </div>
                             
                             <div class="d-flex justify-content-center justify-content-around">
-                                <button id="forgotBtn" onclick="nextWord()" href="" class="btn word-btn"><i class="fa-solid fa-repeat"></i> Forgot</button>
+                                <button id="forgotBtn" href="" class="btn word-btn"><i class="fa-solid fa-repeat"></i> Forgot</button>
                                 <button id="rememberedBtn" class="btn word-btn"><i class="fa-solid fa-check"></i> Remembered</button>
-                                <a id="addWordsBtn" onclick="nextWord()" href="/words" class="d-none btn word-btn"><i class="fa-solid fa-plus"></i> Add New Words</a>
+                                <a id="refreshBtn" href="/learn" class="btn word-btn-after"><i class="fa-solid fa-arrows-rotate"></i> Refresh</a>
+                                <a id="addWordsBtn" href="/words" class="btn word-btn-after"><i class="fa-solid fa-plus"></i> Add New Word</a>
                             </div>
                         </div>
                     </div>         
@@ -31,9 +32,6 @@
             </div>
         </div>
     </div>
-
-<!-- wordsNeedStudy verisini gizli bir div'e göm -->
-<div id="words-data" data-words='<%- JSON.stringify(wordsNeedStudy || []) %>'></div>
 
 <%- include('partials/_footer'); %>
 <script src="/learn.js"></script>

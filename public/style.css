@@ -164,7 +164,19 @@ footer {
     border-radius: 0px;
     margin: 0px;
 }
+
 .word-btn:hover {
+    border: 1px solid #1F2937;
+}
+
+.word-btn-after {
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 0px;
+    margin: 0px;
+}
+
+.word-btn-after:hover {
     border: 1px solid #1F2937;
 }
 
