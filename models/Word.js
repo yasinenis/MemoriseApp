@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-import slugify from 'slugify';
-
 const Schema = mongoose.Schema;
 
 const WordSchema = new Schema({
@@ -23,6 +21,9 @@ const WordSchema = new Schema({
   progress: {
     type: Number,
     default: 0,
+  },
+  lastRemembered: {
+    type: Date,
   },
   phonetics: {
     type: String,
