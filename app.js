@@ -16,6 +16,7 @@ import pageRoute from './routes/pageRoute.js';
 import wordRoute from './routes/wordRoute.js';
 import userRoute from './routes/userRoute.js';
 import learnRoute from './routes/learnRoute.js';
+import dashboardRoute from './routes/dashboardRoute.js';
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use('/', pageRoute);
 app.use('/words', wordRoute);
 app.use('/users', userRoute);
 app.use('/learn', learnRoute);
+app.use('/dashboard', dashboardRoute);
 
 const port = 3000;
 

@@ -18,7 +18,6 @@ const meaningDOM = document.getElementById('meaning');
 const rememberedBtnDOM = document.getElementById('rememberedBtn');
 const forgotBtnDOM = document.getElementById('forgotBtn');
 const addWordsBtnDOM = document.getElementById('addWordsBtn');
-const refreshBtnDOM = document.getElementById('refreshBtn');
 
 let currentIndex = 0;
 
@@ -84,7 +83,6 @@ async function refreshWords() {
 
 function noWords() {
   addWordsBtnDOM.classList.remove('d-none'); // görün
-  refreshBtnDOM.classList.remove('d-none');
   forgotBtnDOM.classList.add('d-none');
   rememberedBtnDOM.classList.add('d-none');
   categoryIconDOM.classList.add('d-none');
@@ -93,7 +91,6 @@ function noWords() {
 
 function yesWords() {
   addWordsBtnDOM.classList.add('d-none');
-  refreshBtnDOM.classList.add('d-none');
   forgotBtnDOM.classList.remove('d-none');
   rememberedBtnDOM.classList.remove('d-none');
   categoryIconDOM.classList.remove('d-none');

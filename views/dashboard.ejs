@@ -1,0 +1,62 @@
+<%- include('partials/_header'); %>
+
+<body class="inter-my">
+    <%- include('partials/_navigation'); %>
+
+    <div class="container mt-4 mb-4 border-start border-end min-heigh-vh">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-6 d-flex flex-column justify-content-center">
+                <h2 class="d-flex justify-content-center text-theme-1">Have a good work &nbsp; <span class="text-success">{ </span> <%= username %> <span class="text-success"> }</span> &nbsp !</h2>
+                <hr>
+                <div class="dropdown mt-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Period
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="point-it"><a id="weekly-drop" class="dropdown-item">Weekly</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="point-it"><a id="monthly-drop" class="dropdown-item">Monthly</a></li>
+                        <li class="point-it"><a id="yearly-drop" class="dropdown-item">Yearly</a></li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <canvas id="weeklyChart" width="400" height="200"></canvas>
+                    <canvas id="monthlyChart" class="d-none" width="400" height="200"></canvas>
+                    <canvas id="yearlyChart" class="d-none" width="400" height="200"></canvas>
+                </div>
+                
+                <hr>
+
+            </div>
+        </div>
+    </div>
+
+<!--     
+<canvas id="wordsChart" width="400" height="200"></canvas>
+
+
+
+    <script>
+
+
+        const ctx = document.getElementById('wordsChart');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Learned', 'Learning'],
+                datasets: [{
+                    data: [120, 45], // örnek: 120 kelime öğrenildi, 45 öğreniliyor
+                    backgroundColor: ['#28a745', '#ffc107']
+                }]
+            },
+            options: {
+            responsive: false,   // büyüyüp küçülmesin
+            maintainAspectRatio: false
+            }
+        });
+</script>
+-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/dashboard.js"></script>
+<script type="module" src="/dashboard.js"></script>
+<%- include('partials/_footer'); %>

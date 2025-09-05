@@ -180,3 +180,16 @@ footer {
     border: 1px solid #1F2937;
 }
 
+/* dashboard */
+.bg-theme-1 {
+    background-color: #1F2937;
+    color: white;
+}
+
+.text-theme-1 {
+    color: #1F2937;
+}
+
+.min-heigh-vh {
+    min-height: 85.7vh;
+}

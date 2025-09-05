@@ -39,7 +39,7 @@ export async function loginUser(req, res) {
     req.session.userID = user._id;
     req.session.username = user.name;
 
-    res.status(201).redirect('/');
+    res.status(201).redirect('/dashboard');
   } catch (err) {
     res.status(400).json({
       status: 'fail',
