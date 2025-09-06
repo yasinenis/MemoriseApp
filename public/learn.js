@@ -19,6 +19,8 @@ const rememberedBtnDOM = document.getElementById('rememberedBtn');
 const forgotBtnDOM = document.getElementById('forgotBtn');
 const addWordsBtnDOM = document.getElementById('addWordsBtn');
 
+startPage();
+
 let currentIndex = 0;
 
 let wordsNeedStudy = [];
@@ -95,6 +97,14 @@ function yesWords() {
   rememberedBtnDOM.classList.remove('d-none');
   categoryIconDOM.classList.remove('d-none');
   categoryDOM.classList.remove('d-none');
+}
+
+function startPage() {
+  addWordsBtnDOM.classList.add('d-none');
+  forgotBtnDOM.classList.add('d-none');
+  rememberedBtnDOM.classList.add('d-none');
+  categoryIconDOM.classList.add('d-none');
+  categoryDOM.classList.add('d-none');
 }
 
 rememberedBtnDOM.addEventListener('click', async function (e) {

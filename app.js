@@ -46,6 +46,9 @@ app.use(
     store: MongoStore.create({
       mongoUrl: process.env.DATABASE_URL,
     }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
   })
 );
 app.use((req, res, next) => {

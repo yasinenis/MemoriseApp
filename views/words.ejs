@@ -45,7 +45,7 @@
                           <td class="text-success"><%= words[i].category ? words[i].category.name : "no category" %></td>
                           <td class="py-1">
                             <a data-bs-toggle="modal" data-bs-target="#editModal-<%= words[i]._id %>" class="wordEditBtn d-none word-edit-btn-group btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Update</a>
-                            <a href="/words/delete/<%= words[i]._id %>" class="word-edit-btn-group wordDeleteBtn d-none btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
+                            <a href="/words/delete/<%= words[i]._id %>" onclick="return confirm('Are you sure, you want to delete this word?')" class="word-edit-btn-group wordDeleteBtn d-none btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i> Delete</a>
                           </td>
                         </tr>
 
@@ -119,7 +119,7 @@
                           <td class="py-1">
                             <% if(categories[i].name !== 'Uncategorized') { %>
                             <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="categoryEditBtn d-none btn btn-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i>Update</a>
-                            <a href="/words/deleteCategory/<%= categories[i]._id %>" class="categoryDeleteBtn d-none btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
+                            <a href="/words/deleteCategory/<%= categories[i]._id %>" onclick="return confirm('Are you sure, you want to delete this category?')" class="categoryDeleteBtn d-none btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i>Delete</a>
                             <% } %>
                           </td>
                         </tr>
