@@ -11,6 +11,54 @@ export async function getDashboardPage(req, res) {
   }
 }
 
+async function calculateOneMonth(req, monthOffset = 0) {
+  const today = new Date();
+  const userId = req.session.userID;
+
+  const year = today.getFullYear();
+  const month = today.getMonth() + monthOffset;
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const dailyDataOfMonth = [];
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const start = new Date(year, month, day, 0, 0, 0, 0);
+    const end = new Date(year, month, day, 23, 59, 59, 999);
+
+    const targetNew = await Word.countDocuments({
+      user: userId,
+      createdAt: { $gte: start, $lte: end },
+    });
+
+    const targetRemembered = await Word.countDocuments({
+      user: userId,
+      rememberHistory: { $gte: start, $lte: end },
+    });
+
+    const targetMastered = await Word.countDocuments({
+      user: userId,
+      masteredHistory: { $gte: start, $lte: end },
+    });
+
+    dailyDataOfMonth.push({ targetNew, targetRemembered, targetMastered });
+  }
+
+  return dailyDataOfMonth;
+}
+
+export async function getMonthChartInfo(req, res) {
+  try {
+    const dailyDataOfMonth = await calculateOneMonth(req);
+    console.log(dailyDataOfMonth);
+    res.status(200).json(dailyDataOfMonth);
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
+
 async function calculateWeekly(req, targetDay) {
   const today = new Date();
   let dayOfWeek = today.getDay(); // 0 = Pazar, 1 = Pazartesi, ..., 6 = Cumartesi
@@ -82,8 +130,6 @@ export async function getWeeklyChartInfo(req, res) {
       saturday.targetMastered,
       sunday.targetMastered,
     ];
-
-    console.log({ weeklyNew, weeklyRemembered, weeklyMastered });
 
     res.status(200).json({ weeklyNew, weeklyRemembered, weeklyMastered });
   } catch (err) {

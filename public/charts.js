@@ -3,7 +3,7 @@
 let yearlyChartInstance = null;
 let weeklyChartInstance = null;
 let monthlyChartInstance = null;
-
+// -------------------------- YEARLY --------------------------------------
 export function yearlyChart() {
   const canvas = document.getElementById('yearlyChart');
 
@@ -50,7 +50,7 @@ export function yearlyChart() {
 
   // Data
   const DATA_COUNT = 12;
-  const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+  const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 1000 };
   const labels = Utils.months({ count: DATA_COUNT });
   const data = {
     labels: labels,
@@ -103,6 +103,7 @@ export function yearlyChart() {
   );
   return yearlyChartInstance;
 }
+// -------------------------- WEEKLY --------------------------------------
 
 export async function weeklyChart() {
   const canvas = document.getElementById('weeklyChart');
@@ -115,7 +116,7 @@ export async function weeklyChart() {
   let weeklyInfo = 0;
 
   try {
-    const res = await fetch('/dashboard/fetch-chart-info');
+    const res = await fetch('/dashboard/fetch-chart-weekly');
     if (res.ok) {
       let fetchedWeekly = await res.json();
       weeklyInfo = fetchedWeekly;
@@ -151,7 +152,7 @@ export async function weeklyChart() {
 
   // Data
   const DATA_COUNT = 7;
-  const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+  const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 1000 };
   const labels = Utils.months({ count: DATA_COUNT });
   const data = {
     labels: labels,
@@ -168,7 +169,7 @@ export async function weeklyChart() {
       },
       {
         label: 'writed',
-        data: [5, 5, 5, 5, 5, 5, 5],
+        data: [0, 0, 0, 0, 0, 0, 0],
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
@@ -204,14 +205,30 @@ export async function weeklyChart() {
   );
   return weeklyChartInstance;
 }
+// -------------------------- MONTHLY --------------------------------------
 
-export function monthlyChart() {
+export async function monthlyChart() {
   const canvas = document.getElementById('monthlyChart');
 
   // If there is a chart, destroy it before
   if (monthlyChartInstance) {
     monthlyChartInstance.destroy();
   }
+
+  // FETCHING DATA
+  let monthlyInfo = 0;
+
+  try {
+    const res = await fetch('/dashboard/fetch-chart-monthly');
+    if (res.ok) {
+      let fetchedMonthly = await res.json();
+      monthlyInfo = fetchedMonthly;
+    } else {
+      console.error('Fetch failed:', res.status);
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
+  } // ------ fetched --------
 
   const Utils = {
     months({ count }) {
@@ -246,6 +263,8 @@ export function monthlyChart() {
         '28',
         '29',
         '30',
+        '31',
+        '32',
       ];
       return allMonths.slice(0, count);
     },
@@ -268,30 +287,30 @@ export function monthlyChart() {
   };
 
   // Data
-  const DATA_COUNT = 30;
-  const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+  const DATA_COUNT = monthlyInfo.length;
+  const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 1000 };
   const labels = Utils.months({ count: DATA_COUNT });
   const data = {
     labels: labels,
     datasets: [
       {
         label: 'New',
-        data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+        data: monthlyInfo.map((d) => d.targetNew),
         backgroundColor: Utils.CHART_COLORS.newWords,
       },
       {
         label: 'remembered',
-        data: [10, 10, 10, 10, 20, 10, 10, 10, 10, 10, 10, 10],
+        data: monthlyInfo.map((d) => d.targetRemembered),
         backgroundColor: Utils.CHART_COLORS.remembered,
       },
       {
         label: 'writed',
-        data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
         label: 'mastered',
-        data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 50],
+        data: monthlyInfo.map((d) => d.targetMastered),
         backgroundColor: Utils.CHART_COLORS.mastered,
       },
     ],
