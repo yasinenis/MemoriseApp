@@ -109,7 +109,7 @@ async function showWord(index) {
       iconClass2: 'fa-circle',
     },
     10: {
-      text: 'Legendary',
+      text: 'Expert',
       className: 'color-mastered',
       iconClass: 'fa-solid',
       iconClass2: 'fa-circle',

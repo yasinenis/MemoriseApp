@@ -142,18 +142,21 @@ export async function rememberedWord(req, res) {
       }
     );
 
-    const mastered = await Word.findOneAndUpdate(
-      {
-        _id: req.params.id,
-        user: req.session.userID,
-        progress: { $gte: 5, $lte: 10 },
-      },
-      {
-        $inc: { progress: 1 },
-        $set: { lastRemembered: new Date() },
-        $push: { masteredHistory: new Date() },
-      }
-    );
+    if (!word) {
+      const mastered = await Word.findOneAndUpdate(
+        {
+          _id: req.params.id,
+          user: req.session.userID,
+          progress: { $gte: 5, $lte: 10 },
+        },
+        {
+          $inc: { progress: 1 },
+          $set: { lastRemembered: new Date() },
+          $push: { masteredHistory: new Date() },
+        }
+      );
+    }
+
     res.status(200).json({ status: 'success' });
   } catch (error) {
     res.status(400).json({

@@ -199,21 +199,51 @@ footer {
 }
 
 .color-new {
-    color: rgb(54, 162, 235,0.7);
+    color: rgb(54, 162, 235,0.7) !important;
+}
+.color-new-net {
+    color: rgb(54, 162, 235,1) !important;
 }
 
 .color-remembered {
-    color: rgb(255, 165, 0)
+    color: rgb(255, 165, 0) !important;
 }
 
 .color-writed {
-    color: rgb(153, 102, 255,0.7);
+    color: rgb(153, 102, 255,0.7) !important;
 }
 
 .color-mastered {
-    color: rgba(50, 150, 150, 0.9);
+    color: rgba(50, 150, 150, 0.9) !important;
 }
 
 .color-legendary {
     color: rgba(255, 99, 71, 0.8)
+}
+
+.border-mastered {
+    color: rgba(50, 150, 150, 0.9) !important;
+    padding: 2px;
+    border: 1px solid rgba(50, 150, 150, 0.9);
+    border-radius: 20px;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.border-new {
+    color: rgb(54, 162, 235,1) !important;
+    padding: 2px;
+    border: 1px solid rgb(54, 162, 235,1);
+    border-radius: 20px;
+    padding-right: 50px;
+    padding-left: 5px;
+}
+
+.border-remembered {
+    color: rgb(255, 165, 0) !important;
+    padding: 2px;
+    border: 1px solid rgb(255, 165, 0);
+    border-radius: 20px;
+    padding-right: 10px;
+    padding-left: 5px;
 }
