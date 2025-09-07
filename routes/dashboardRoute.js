@@ -8,5 +8,6 @@ const router = express.Router();
 router.route('/').get(authMiddleware, dashboardController.getDashboardPage); // localhost:3000/learn
 router.route('/fetch-chart-weekly').get(dashboardController.getWeeklyChartInfo);
 router.route('/fetch-chart-monthly').get(dashboardController.getMonthChartInfo);
+router.route('/fetch-chart-yearly').get(dashboardController.getYearlyChartInfo);
 
 export default router;

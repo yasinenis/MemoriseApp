@@ -11,6 +11,72 @@ export async function getDashboardPage(req, res) {
   }
 }
 
+async function calculateYearlyData(req, monthIndex) {
+  const today = new Date();
+  const userId = req.session.userID;
+
+  const firstDay = new Date(today.getFullYear(), monthIndex, 1);
+  firstDay.setHours(0, 0, 0, 0);
+
+  const lastDay = new Date(today.getFullYear(), monthIndex + 1, 0);
+  lastDay.setHours(23, 59, 59, 999);
+
+  const targetNew = await Word.countDocuments({
+    user: userId,
+    createdAt: { $gte: firstDay, $lte: lastDay },
+  });
+
+  const targetRemembered = await Word.countDocuments({
+    user: userId,
+    rememberHistory: { $gte: firstDay, $lte: lastDay },
+  });
+
+  const targetMastered = await Word.countDocuments({
+    user: userId,
+    masteredHistory: { $gte: firstDay, $lte: lastDay },
+  });
+
+  return { targetNew, targetRemembered, targetMastered };
+}
+
+export async function getYearlyChartInfo(req, res) {
+  try {
+    const january = await calculateYearlyData(req, 0);
+    const february = await calculateYearlyData(req, 1);
+    const march = await calculateYearlyData(req, 2);
+    const april = await calculateYearlyData(req, 3);
+    const may = await calculateYearlyData(req, 4);
+    const june = await calculateYearlyData(req, 5);
+    const july = await calculateYearlyData(req, 6);
+    const august = await calculateYearlyData(req, 7);
+    const september = await calculateYearlyData(req, 8);
+    const october = await calculateYearlyData(req, 9);
+    const november = await calculateYearlyData(req, 10);
+    const december = await calculateYearlyData(req, 11);
+
+    const yearlyInfo = [
+      january,
+      february,
+      march,
+      april,
+      may,
+      june,
+      july,
+      august,
+      september,
+      october,
+      november,
+      december,
+    ];
+    res.status(200).json({ yearlyInfo });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
+
 async function calculateOneMonth(req, monthOffset = 0) {
   const today = new Date();
   const userId = req.session.userID;
@@ -49,7 +115,6 @@ async function calculateOneMonth(req, monthOffset = 0) {
 export async function getMonthChartInfo(req, res) {
   try {
     const dailyDataOfMonth = await calculateOneMonth(req);
-    console.log(dailyDataOfMonth);
     res.status(200).json(dailyDataOfMonth);
   } catch (err) {
     res.status(400).json({

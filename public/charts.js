@@ -4,12 +4,26 @@ let yearlyChartInstance = null;
 let weeklyChartInstance = null;
 let monthlyChartInstance = null;
 // -------------------------- YEARLY --------------------------------------
-export function yearlyChart() {
+export async function yearlyChart() {
   const canvas = document.getElementById('yearlyChart');
 
   // Eğer chart varsa önce destroy et
   if (yearlyChartInstance) {
     yearlyChartInstance.destroy();
+  }
+
+  let yearlyInfo = 0;
+
+  try {
+    const res = await fetch('/dashboard/fetch-chart-yearly');
+    if (res.ok) {
+      let fetchedYearly = await res.json();
+      yearlyInfo = fetchedYearly.yearlyInfo;
+    } else {
+      console.error('Fetch failed:', res.status);
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
   }
 
   const Utils = {
@@ -57,22 +71,22 @@ export function yearlyChart() {
     datasets: [
       {
         label: 'New',
-        data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+        data: yearlyInfo.map((p) => p.targetNew),
         backgroundColor: Utils.CHART_COLORS.newWords,
       },
       {
         label: 'remembered',
-        data: [10, 10, 10, 10, 20, 10, 10, 10, 10, 10, 10, 10],
+        data: yearlyInfo.map((p) => p.targetRemembered),
         backgroundColor: Utils.CHART_COLORS.remembered,
       },
       {
         label: 'writed',
-        data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
         label: 'mastered',
-        data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 50],
+        data: yearlyInfo.map((p) => p.targetMastered),
         backgroundColor: Utils.CHART_COLORS.mastered,
       },
     ],
