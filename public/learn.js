@@ -18,6 +18,8 @@ const meaningDOM = document.getElementById('meaning');
 const rememberedBtnDOM = document.getElementById('rememberedBtn');
 const forgotBtnDOM = document.getElementById('forgotBtn');
 const addWordsBtnDOM = document.getElementById('addWordsBtn');
+const progressIconDOM = document.getElementById('progress-icon');
+const progressDOM = document.getElementById('progress');
 
 startPage();
 
@@ -39,10 +41,93 @@ async function showWord(index) {
       return;
     }
   }
+
   categoryDOM.innerText = word.category.name;
   wordDOM.innerText = word.word;
   meaningDOM.innerText = word.meaning;
   forgotBtnDOM.href = 'learn/forgot/' + wordsNeedStudy[index]._id;
+
+  const progressMap = {
+    0: {
+      text: 'New',
+      className: 'color-new',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    1: {
+      text: 'Progress 1',
+      className: 'color-remembered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    2: {
+      text: 'Progress 2',
+      className: 'color-remembered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    3: {
+      text: 'Progress 3',
+      className: 'color-remembered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    4: {
+      text: 'Progress 4',
+      className: 'color-remembered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    5: {
+      text: 'Mastered 1',
+      className: 'color-mastered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    6: {
+      text: 'Mastered 2',
+      className: 'color-mastered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    7: {
+      text: 'Mastered 3',
+      className: 'color-mastered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    8: {
+      text: 'Mastered 4',
+      className: 'color-mastered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    9: {
+      text: 'Mastered 5',
+      className: 'color-mastered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+    10: {
+      text: 'Legendary',
+      className: 'color-mastered',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
+  };
+
+  const progressInfo = progressMap[word.progress];
+
+  if (progressInfo) {
+    progressDOM.innerText = ` ${progressInfo.text}`;
+    progressDOM.className = '';
+    progressIconDOM.className = '';
+    progressDOM.classList.add(progressInfo.className);
+    progressIconDOM.classList.add(progressInfo.className);
+    progressIconDOM.classList.add(progressInfo.iconClass);
+    progressIconDOM.classList.add(progressInfo.iconClass2);
+  }
+
   yesWords();
 }
 
@@ -89,6 +174,8 @@ function noWords() {
   rememberedBtnDOM.classList.add('d-none');
   categoryIconDOM.classList.add('d-none');
   categoryDOM.classList.add('d-none');
+  progressIconDOM.classList.add('d-none');
+  progressDOM.classList.add('d-none');
 }
 
 function yesWords() {
@@ -97,6 +184,8 @@ function yesWords() {
   rememberedBtnDOM.classList.remove('d-none');
   categoryIconDOM.classList.remove('d-none');
   categoryDOM.classList.remove('d-none');
+  progressIconDOM.classList.remove('d-none');
+  progressDOM.classList.remove('d-none');
 }
 
 function startPage() {
@@ -105,6 +194,8 @@ function startPage() {
   rememberedBtnDOM.classList.add('d-none');
   categoryIconDOM.classList.add('d-none');
   categoryDOM.classList.add('d-none');
+  progressIconDOM.classList.add('d-none');
+  progressDOM.classList.add('d-none');
 }
 
 rememberedBtnDOM.addEventListener('click', async function (e) {

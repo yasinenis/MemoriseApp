@@ -2,12 +2,12 @@ import Category from '../models/Category.js';
 import Word from '../models/Word.js';
 
 export async function createCategory(req, res) {
-  const category = await Category.create({
-    name: req.body.name,
-    user: req.session.userID,
-  });
-
   try {
+    const category = await Category.create({
+      name: req.body.name,
+      user: req.session.userID,
+    });
+
     res.status(201).redirect('/words');
   } catch (err) {
     res.status(400).json({

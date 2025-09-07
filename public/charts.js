@@ -42,8 +42,8 @@ export function yearlyChart() {
       green: 'rgba(75, 192, 192, 0.5)',
       orange: 'rgb(255, 159, 64)',
       newWords: 'rgb(54, 162, 235,0.7)', // mavi
-      learning: 'rgb(255, 205, 86,0.7)', // sarı
-      learned: 'rgb(75, 192, 192,0.7)', // yeşil
+      remembered: 'rgb(255, 165, 0,0.7)', // sarı
+      mastered: 'rgb(75, 192, 192,0.7)', // yeşil
       writed: 'rgb(153, 102, 255,0.7)', // mor
     },
   };
@@ -61,9 +61,9 @@ export function yearlyChart() {
         backgroundColor: Utils.CHART_COLORS.newWords,
       },
       {
-        label: 'learning',
+        label: 'remembered',
         data: [10, 10, 10, 10, 20, 10, 10, 10, 10, 10, 10, 10],
-        backgroundColor: Utils.CHART_COLORS.learning,
+        backgroundColor: Utils.CHART_COLORS.remembered,
       },
       {
         label: 'writed',
@@ -71,9 +71,9 @@ export function yearlyChart() {
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
-        label: 'learned',
+        label: 'mastered',
         data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 50],
-        backgroundColor: Utils.CHART_COLORS.learned,
+        backgroundColor: Utils.CHART_COLORS.mastered,
       },
     ],
   };
@@ -104,12 +104,26 @@ export function yearlyChart() {
   return yearlyChartInstance;
 }
 
-export function weeklyChart() {
+export async function weeklyChart() {
   const canvas = document.getElementById('weeklyChart');
 
   // Eğer chart varsa önce destroy et
   if (weeklyChartInstance) {
     weeklyChartInstance.destroy();
+  }
+
+  let weeklyInfo = 0;
+
+  try {
+    const res = await fetch('/dashboard/fetch-chart-info');
+    if (res.ok) {
+      let fetchedWeekly = await res.json();
+      weeklyInfo = fetchedWeekly;
+    } else {
+      console.error('Fetch failed:', res.status);
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
   }
 
   const Utils = {
@@ -129,8 +143,8 @@ export function weeklyChart() {
       green: 'rgba(75, 192, 192, 0.5)',
       orange: 'rgb(255, 159, 64)',
       newWords: 'rgb(54, 162, 235,0.7)', // mavi
-      learning: 'rgb(255, 205, 86,0.7)', // sarı
-      learned: 'rgb(75, 192, 192,0.7)', // yeşil
+      remembered: 'rgb(255, 165, 0,0.7)', // sarı
+      mastered: 'rgb(75, 192, 192,0.7)', // yeşil
       writed: 'rgb(153, 102, 255,0.7)', // mor
     },
   };
@@ -144,13 +158,13 @@ export function weeklyChart() {
     datasets: [
       {
         label: 'New',
-        data: [1, 4, 5, 15, 5, 5, 30],
+        data: weeklyInfo.weeklyNew,
         backgroundColor: Utils.CHART_COLORS.newWords,
       },
       {
-        label: 'learning',
-        data: [5, 5, 5, 5, 5, 5, 5],
-        backgroundColor: Utils.CHART_COLORS.learning,
+        label: 'remembered',
+        data: weeklyInfo.weeklyRemembered,
+        backgroundColor: Utils.CHART_COLORS.remembered,
       },
       {
         label: 'writed',
@@ -158,9 +172,9 @@ export function weeklyChart() {
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
-        label: 'learned',
-        data: [5, 5, 5, 5, 5, 5, 10],
-        backgroundColor: Utils.CHART_COLORS.learned,
+        label: 'mastered',
+        data: weeklyInfo.weeklyMastered,
+        backgroundColor: Utils.CHART_COLORS.mastered,
       },
     ],
   };
@@ -247,8 +261,8 @@ export function monthlyChart() {
       green: 'rgba(75, 192, 192, 0.5)',
       orange: 'rgb(255, 159, 64)',
       newWords: 'rgb(54, 162, 235,0.7)', // mavi
-      learning: 'rgb(255, 205, 86,0.7)', // sarı
-      learned: 'rgb(75, 192, 192,0.7)', // yeşil
+      remembered: 'rgb(255, 165, 0,0.7)', // sarı
+      mastered: 'rgb(75, 192, 192,0.7)', // yeşil
       writed: 'rgb(153, 102, 255,0.7)', // mor
     },
   };
@@ -266,9 +280,9 @@ export function monthlyChart() {
         backgroundColor: Utils.CHART_COLORS.newWords,
       },
       {
-        label: 'learning',
+        label: 'remembered',
         data: [10, 10, 10, 10, 20, 10, 10, 10, 10, 10, 10, 10],
-        backgroundColor: Utils.CHART_COLORS.learning,
+        backgroundColor: Utils.CHART_COLORS.remembered,
       },
       {
         label: 'writed',
@@ -276,9 +290,9 @@ export function monthlyChart() {
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
-        label: 'learned',
+        label: 'mastered',
         data: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 50],
-        backgroundColor: Utils.CHART_COLORS.learned,
+        backgroundColor: Utils.CHART_COLORS.mastered,
       },
     ],
   };

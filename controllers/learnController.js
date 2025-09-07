@@ -60,7 +60,7 @@ export async function getWordsNeedLearn(req, res) {
     const oneDay = 1000 * 60 * 60 * 24;
     // const oneMins = 1000 * 60 * 1;
 
-    // progress 0 ------------------------------------------------------
+    // progress 0 --------------------new------------------------------
     const wordsZero = await getWordsByProgress(userId, 0, 0, oneDay);
     // progress 1 ------------------------------------------------------
     const wordsOne = await getWordsByProgress(userId, 1, 1, oneDay);
@@ -70,7 +70,7 @@ export async function getWordsNeedLearn(req, res) {
     const wordsThree = await getWordsByProgress(userId, 3, 4, oneDay);
     // progress 4 ------------------------------------------------------
     const wordsFour = await getWordsByProgress(userId, 4, 8, oneDay);
-    // progress 5 ------------------------------------------------------
+    // progress 5 --------------------master----------------------------
     const wordsFive = await getWordsByProgress(userId, 5, 16, oneDay);
     // progress 6 ------------------------------------------------------
     const wordsSix = await getWordsByProgress(userId, 6, 32, oneDay);
@@ -133,10 +133,25 @@ export async function rememberedWord(req, res) {
       {
         _id: req.params.id,
         user: req.session.userID,
+        progress: { $gte: 0, $lte: 4 },
       },
       {
         $inc: { progress: 1 },
         $set: { lastRemembered: new Date() },
+        $push: { rememberHistory: new Date() },
+      }
+    );
+
+    const mastered = await Word.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        user: req.session.userID,
+        progress: { $gte: 5, $lte: 10 },
+      },
+      {
+        $inc: { progress: 1 },
+        $set: { lastRemembered: new Date() },
+        $push: { masteredHistory: new Date() },
       }
     );
     res.status(200).json({ status: 'success' });

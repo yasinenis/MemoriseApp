@@ -25,9 +25,18 @@ const WordSchema = new Schema({
   lastRemembered: {
     type: Date,
   },
+  lastWrited: {
+    type: Date,
+  },
+  rememberHistory: [{ type: Date }],
   phonetics: {
     type: String,
   },
+  masteredHistory: [
+    {
+      type: Date,
+    },
+  ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
