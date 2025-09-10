@@ -10,7 +10,6 @@ router
   .route('/remembered/:id')
   .get(authMiddleware, learnController.rememberedWord);
 router.route('/forgot/:id').get(authMiddleware, learnController.forgotWord);
-router
-  .route('/fetch-words')
-  .get(authMiddleware, learnController.getWordsNeedLearn);
+router.route('/fetch-words').get(learnController.getWordsNeedLearn);
+router.route('/isThereEvenOneWord').get(learnController.isThereEvenOneWord);
 export default router;

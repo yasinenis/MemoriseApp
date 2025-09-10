@@ -1,6 +1,20 @@
 import Word from '../models/Word.js';
 import mongoose from 'mongoose';
 
+export async function isThereEvenOneWord(req, res) {
+  try {
+    const word = await Word.findOne({ user: req.session.userID });
+
+    const isThereEvenOneWord = !!word;
+    res.status(200).json({ isThereEvenOneWord });
+  } catch (error) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
+
 export async function getWordsByProgress(
   userId,
   progress,

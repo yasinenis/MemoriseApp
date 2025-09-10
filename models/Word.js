@@ -28,7 +28,10 @@ const WordSchema = new Schema({
   lastWrited: {
     type: Date,
   },
-  rememberHistory: [{ type: Date }],
+  written: {
+    type: Boolean,
+    default: false,
+  },
   phonetics: {
     type: String,
   },
@@ -37,7 +40,7 @@ const WordSchema = new Schema({
       type: Date,
     },
   ],
-  writedHistory: [
+  writtenHistory: [
     {
       type: Date,
     },

@@ -22,6 +22,7 @@ const progressIconDOM = document.getElementById('progress-icon');
 const progressDOM = document.getElementById('progress');
 
 startPage();
+isThereEvenOneWord();
 
 let currentIndex = 0;
 
@@ -236,3 +237,24 @@ forgotBtnDOM.addEventListener('click', async function (e) {
 window.onload = async () => {
   await fetchWords();
 };
+
+async function isThereEvenOneWord() {
+  try {
+    const res = await fetch('/learn/isThereEvenOneWord');
+    if (res.ok) {
+      const fetchedResult = await res.json();
+
+      if (fetchedResult.isThereEvenOneWord === false) {
+        const modal = new bootstrap.Modal(
+          document.getElementById('noWordsModal')
+        );
+        modal.show();
+        return;
+      } else {
+        return;
+      }
+    }
+  } catch (err) {
+    console.error('Fetch Error:', err);
+  }
+}
