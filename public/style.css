@@ -104,12 +104,12 @@ footer {
 }
 
 
-/* home */
+/* home ----------------------------------------------------------*/
 .back-span {
     color: #10B981;
 }
 
-/* words */
+/* words ----------------------------------------------------------*/
 
 .word-border {
     border: 1px solid #1f2937;
@@ -136,7 +136,7 @@ footer {
 }
 
 
-/* learn page */
+/* learn page ----------------------------------------------------------*/
 .inter-my {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -180,7 +180,7 @@ footer {
     border: 1px solid #1F2937;
 }
 
-/* dashboard */
+/* dashboard ----------------------------------------------------------*/
 .bg-theme-1 {
     background-color: #1F2937;
     color: white;
@@ -246,4 +246,27 @@ footer {
     border-radius: 20px;
     padding-right: 10px;
     padding-left: 5px;
+}
+
+/* write ----------------------------------------------------------*/
+.border-write-word {
+    border: 1px solid #1F2937;
+    border-radius: 5px;
+    background-color: white;
+    height: 385.5px;
+}
+
+.height-gap {
+  min-height: 52.3vh !important;
+}
+
+.write-input-control {
+    width: 1100px;
+    resize: none;
+    border-left: 0px;
+}
+
+.write-input-control:focus {
+ 
+    outline: #1f2937;
 }

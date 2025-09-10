@@ -37,6 +37,11 @@ const WordSchema = new Schema({
       type: Date,
     },
   ],
+  writedHistory: [
+    {
+      type: Date,
+    },
+  ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

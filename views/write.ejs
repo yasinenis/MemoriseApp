@@ -1,0 +1,77 @@
+<%- include('partials/_header'); %>
+
+<body class="inter-my">
+    <%- include('partials/_navigation'); %>
+    
+    <div class="container mt-5 mb-5">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="justify-content-center"><i class="fa-solid fa-dumbbell"></i> Write Exercises</h2>
+            </div>
+            
+            <div class="col-12 d-flex justify-content-center mb-4">
+                Internalise a &nbsp;<span class="text-decoration-underline">random</span>&nbsp; word by practicing it.
+            </div>
+            <!-- 
+            <div class="col-12 d-flex mt-4 align-items-center">
+                <div>
+                    <button class="btn btn-dark btn-sm"><i class="fa-solid fa-dice"></i> Change</button>
+                </div>
+                <div class="d-flex border-write-word align-items-center p-1 ms-2">
+                    <span class="me-2 d-flex align-items-center border-write-word-inner lg"> Word </span>
+                    <span class="me-2 d-flex align-items-center border-write-word-inner-l lg">Mean |</span>
+                    <span class="me-2 d-flex align-items-center lg">PartOfSpeech |</span>
+                    <span class="me-2 d-flex align-items-center lg">Phonetics |</span>
+                    <span class="me-2 d-flex align-items-center lg">Progress |</span>
+                    <span class="me-2 d-flex align-items-center border-write-word-inner-r lg">Category</span>
+                </div>
+            </div>
+            -->
+            <div class="col-2 p-0">
+                <div class="border-write-word mt-3 rounded-end-0">
+                    <div class="w-100">
+                        <button class="btn btn-dark btn-sm w-100 rounded-0"><i class="fa-solid fa-shuffle"></i> Change</button>
+                    </div>
+                    <div class="d-flex justify-content-center flex-column mb-4 mt-4">
+                        <div class="d-flex justify-content-center mt-4">
+                            <h4>Uzun bir kelime</h4>
+                        </div>
+
+                        <div class="d-flex justify-content-center mt-4">
+                            <span>Mean</span>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <span>Part Of Speech</span>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <span>Phonetics</span>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <span>Progress</span>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 mb-4">
+                            <span>Category</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            
+            </div>
+            <div class="col-10 mt-3 mb-5 height-gap p-0 rounded-start-0">
+                <form method="POST" action="/write/saved">
+                    <textarea name="write" rows="14" id="" class="text-area-write write-input-control p-4 rounded-start-0" placeholder="Write anything you want using the word above. It will help you learn better. For example: a romance, a story, straight text, etc."></textarea>
+                    <button class="btn btn-dark btn-lg mt-3" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    
+
+    <%- include('partials/_footer'); %>
+</body>
