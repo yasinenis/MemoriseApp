@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import Word from '../models/Word.js';
 
 export async function getWritePage(req, res) {
-  res.status(200).render('write');
+  res.status(200).render('write', { pageName: 'write' });
 }
 
 export async function getWriteWords(req, res) {

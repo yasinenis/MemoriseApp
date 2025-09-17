@@ -15,7 +15,7 @@
             <div class="col-2 p-0">
                 <div class="border-write-word mt-3 rounded-end-0">
                     <div class="w-100">
-                        <button class="btn btn-dark btn-sm w-100 rounded-0"><i class="fa-solid fa-shuffle"></i> Change Word</button>
+                        <button id="changeButton" class="btn btn-dark btn-sm w-100 rounded-0"><i class="fa-solid fa-shuffle"></i> Change Word</button>
                     </div>
                     <div class="d-flex justify-content-center flex-column mb-4 mt-4">
                         <div class="d-flex justify-content-center mt-4">
@@ -50,13 +50,28 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- begin Modal -->
     <div class="modal fade" id="noWordsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         
         <div class="modal-body">
-            🚀 “Start your journey! Add some words, then jump into the writing exercises.”
+            🌱 “Let’s begin! Add a few words first, then you can start practising the exercises.”
+        </div>
+        <div class="modal-footer">
+            <a type="button" href="/words" class="btn btn-dark btn-sm">Add Words</a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- done Modal -->
+    <div class="modal fade" id="doneExerciseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+        <div class="modal-body">
+           🎉  “Well done! No words left for now. Add some new ones to keep practising.”
         </div>
         <div class="modal-footer">
             <a type="button" href="/words" class="btn btn-dark btn-sm">Add Words</a>

@@ -132,7 +132,7 @@ export async function getWordsNeedLearn(req, res) {
 
 export async function getLearnPage(req, res) {
   try {
-    res.status(200).render('learn');
+    res.status(200).render('learn', { pageName: 'learn' });
   } catch (error) {
     res.status(400).json({
       status: 'fail',

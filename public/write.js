@@ -4,22 +4,38 @@ const wordPartOfSpeechDOM = document.getElementById('partOfSpeech');
 const wordPhoneticsDOM = document.getElementById('Phonetics');
 const wordCategoryDOM = document.getElementById('category');
 const wordProgressDOM = document.getElementById('progress');
+const changeButtonDOM = document.getElementById('changeButton');
 
+const doneModal = new bootstrap.Modal(
+  document.getElementById('doneExerciseModal')
+);
+
+const noWordsModal = new bootstrap.Modal(
+  document.getElementById('noWordsModal')
+);
+
+isThereEvenOneWord();
 let wordsRandom = [];
 fetchWordsRandom();
 currentIndex = 0;
 showRandom(currentIndex);
-console.log(wordsRandom);
+
 function showRandom(index) {
   let word = wordsRandom[index];
-  console.log(word);
+
   if (!word) {
-    wordNameDOM.innerHTML = `--`;
-    wordMeanDOM.innerHTML = `--`;
-    wordPartOfSpeechDOM.innerHTML = `--`;
-    wordPhoneticsDOM.innerHTML = '--';
-    wordProgressDOM.innerHTML = '--';
-    wordCategoryDOM.innerHTML = '--';
+    fetchWordsRandom();
+    word = wordsRandom[currentIndex];
+    if (!word) {
+      wordNameDOM.innerHTML = `--`;
+      wordMeanDOM.innerHTML = `--`;
+      wordPartOfSpeechDOM.innerHTML = `--`;
+      wordPhoneticsDOM.innerHTML = '--';
+      wordProgressDOM.innerHTML = '--';
+      wordProgressDOM.className = `small`;
+      wordCategoryDOM.innerHTML = '--';
+      return;
+    }
   }
 
   const progressMap = {
@@ -97,11 +113,13 @@ async function fetchWordsRandom() {
       wordsRandom.length = 0;
       wordsRandom.push(...fetchedWords);
 
+      const result = await isThereEvenOneWord();
+      if (result === false) {
+        doneModal.hide();
+        return;
+      }
       if (!wordsRandom.length) {
-        const modal = new bootstrap.Modal(
-          document.getElementById('noWordsModal')
-        );
-        modal.show();
+        doneModal.show();
         return;
       }
 
@@ -113,3 +131,26 @@ async function fetchWordsRandom() {
     console.error('Fetch Error:', err);
   }
 }
+
+async function isThereEvenOneWord() {
+  try {
+    const res = await fetch('/learn/isThereEvenOneWord');
+    if (res.ok) {
+      const fetchedResult = await res.json();
+
+      if (fetchedResult.isThereEvenOneWord === false) {
+        noWordsModal.show();
+        return false;
+      } else {
+        return true;
+      }
+    }
+  } catch (err) {
+    console.error('Fetch Error:', err);
+  }
+}
+
+changeButtonDOM.addEventListener('click', () => {
+  currentIndex++;
+  showRandom(currentIndex);
+});

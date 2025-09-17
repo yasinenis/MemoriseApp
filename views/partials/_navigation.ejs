@@ -4,12 +4,12 @@
             <a class="menu-items" href="/">Memorise <i class="fa-solid fa-layer-group"></i></a>
         </div>
         <div>
-            <a class="menu-items small " href="/">Home</a>
-            <a class="menu-items  small ms-3" href="/learn">Learn</a>
-            <a class="menu-items  small ms-3" href="/write">Write</a>
-            <a class="menu-items  small ms-3" href="/words">Words</a>
-            <a class="menu-items  small ms-3" href="/dashboard">Dashboard</a>
-            <a class="menu-items  small ms-3" href="#">Contact</a>
+            <a class="menu-items small <%= pageName === 'home' ? 'focusNavItem' : '' %>" href="/"><i class="fa-solid fa-house me-1"></i>Home</a>
+            <a class="menu-items small ms-3 <%= pageName === 'learn' ? 'focusNavItem' : '' %>" href="/learn"><i class="fa-solid fa-graduation-cap me-1"></i>Learn</a>
+            <a class="menu-items small ms-3 <%= pageName === 'write' ? 'focusNavItem' : '' %>" href="/write"><i class="fa-solid fa-pen-nib me-1"></i></i>Write</a>
+            <a class="menu-items small ms-3 <%= pageName === 'words' ? 'focusNavItem' : '' %>" href="/words"><i class="fa-solid fa-book-bookmark me-1"></i></i>Words</a>
+            <a class="menu-items small ms-3 <%= pageName === 'dashboard' ? 'focusNavItem' : '' %>" href="/dashboard"><i class="fa-solid fa-chart-line me-1"></i></i>Dashboard</a>
+            <a class="menu-items small ms-3 <%= pageName === 'contact' ? 'focusNavItem' : '' %>" href="#"><i class="fa-solid fa-envelope me-1"></i>Contact</a>
         <% if(!userIN) { %>
             <a class="menu-items btn-collapse ms-3 small" href="/register">Register</a>
             <a class="menu-items btn-collapse ms-1 small" href="/login">Login</a>

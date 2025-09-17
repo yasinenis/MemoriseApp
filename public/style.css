@@ -18,7 +18,11 @@
     color:white;
     font-weight: 400;
     letter-spacing: 1px;
-    font-size:large
+    font-size:medium;
+}
+
+.small-font {
+    font-size: small;
 }
 
 .menu-items:hover {
@@ -46,6 +50,10 @@
 
 nav {
     background-color: #1f2937;
+}
+
+.focusNavItem {
+    color: #10B981;
 }
 
 .my-hr {

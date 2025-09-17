@@ -2,7 +2,7 @@ import Word from '../models/Word.js';
 
 export async function getDashboardPage(req, res) {
   try {
-    res.status(200).render('dashboard');
+    res.status(200).render('dashboard', { pageName: 'dashboard' });
   } catch (err) {
     res.status(400).json({
       status: 'fail',
