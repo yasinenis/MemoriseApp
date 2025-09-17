@@ -81,7 +81,7 @@ export async function yearlyChart() {
       },
       {
         label: 'writed',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: yearlyInfo.map((p) => p.targetWritten),
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
@@ -183,7 +183,7 @@ export async function weeklyChart() {
       },
       {
         label: 'writed',
-        data: [0, 0, 0, 0, 0, 0, 0],
+        data: weeklyInfo.weeklyWritten,
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {
@@ -319,7 +319,7 @@ export async function monthlyChart() {
       },
       {
         label: 'writed',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: monthlyInfo.map((d) => d.targetWritten),
         backgroundColor: Utils.CHART_COLORS.writed,
       },
       {

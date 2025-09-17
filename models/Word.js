@@ -1,3 +1,4 @@
+import { text } from 'express';
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
@@ -45,6 +46,9 @@ const WordSchema = new Schema({
       type: Date,
     },
   ],
+  writeText: {
+    type: String,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

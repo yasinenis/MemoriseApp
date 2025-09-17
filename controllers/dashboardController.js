@@ -36,7 +36,12 @@ async function calculateYearlyData(req, monthIndex) {
     masteredHistory: { $gte: firstDay, $lte: lastDay },
   });
 
-  return { targetNew, targetRemembered, targetMastered };
+  const targetWritten = await Word.countDocuments({
+    user: userId,
+    writtenHistory: { $gte: firstDay, $lte: lastDay },
+  });
+
+  return { targetNew, targetRemembered, targetMastered, targetWritten };
 }
 
 export async function getYearlyChartInfo(req, res) {
@@ -106,7 +111,17 @@ async function calculateOneMonth(req, monthOffset = 0) {
       masteredHistory: { $gte: start, $lte: end },
     });
 
-    dailyDataOfMonth.push({ targetNew, targetRemembered, targetMastered });
+    const targetWritten = await Word.countDocuments({
+      user: userId,
+      writtenHistory: { $gte: start, $lte: end },
+    });
+
+    dailyDataOfMonth.push({
+      targetNew,
+      targetRemembered,
+      targetMastered,
+      targetWritten,
+    });
   }
 
   return dailyDataOfMonth;
@@ -153,7 +168,12 @@ async function calculateWeekly(req, targetDay) {
     user: userId,
     masteredHistory: { $gte: targetDateStart, $lte: targetDateEnd },
   });
-  return { targetNew, targetRemembered, targetMastered };
+
+  const targetWritten = await Word.countDocuments({
+    user: userId,
+    writtenHistory: { $gte: targetDateStart, $lte: targetDateEnd },
+  });
+  return { targetNew, targetRemembered, targetMastered, targetWritten };
 }
 
 export async function getWeeklyChartInfo(req, res) {
@@ -196,7 +216,19 @@ export async function getWeeklyChartInfo(req, res) {
       sunday.targetMastered,
     ];
 
-    res.status(200).json({ weeklyNew, weeklyRemembered, weeklyMastered });
+    const weeklyWritten = [
+      monday.targetWritten,
+      tuesday.targetWritten,
+      wednesday.targetWritten,
+      thursday.targetWritten,
+      friday.targetWritten,
+      saturday.targetWritten,
+      sunday.targetWritten,
+    ];
+
+    res
+      .status(200)
+      .json({ weeklyNew, weeklyRemembered, weeklyMastered, weeklyWritten });
   } catch (err) {
     res.status(400).json({
       status: 'fail',

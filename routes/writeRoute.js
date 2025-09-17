@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.route('/').get(authMiddleware, writeController.getWritePage); // localhost:3000/write
 router.route('/write-words-random').get(writeController.getWriteWords);
+router.route('/save-write-article/:id').post(writeController.saveWriteArticle);
 
 export default router;

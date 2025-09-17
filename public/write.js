@@ -5,6 +5,7 @@ const wordPhoneticsDOM = document.getElementById('Phonetics');
 const wordCategoryDOM = document.getElementById('category');
 const wordProgressDOM = document.getElementById('progress');
 const changeButtonDOM = document.getElementById('changeButton');
+const saveFormDOM = document.getElementById('saveForm');
 
 const doneModal = new bootstrap.Modal(
   document.getElementById('doneExerciseModal')
@@ -27,13 +28,13 @@ function showRandom(index) {
     fetchWordsRandom();
     word = wordsRandom[currentIndex];
     if (!word) {
-      wordNameDOM.innerHTML = `--`;
-      wordMeanDOM.innerHTML = `--`;
-      wordPartOfSpeechDOM.innerHTML = `--`;
-      wordPhoneticsDOM.innerHTML = '--';
-      wordProgressDOM.innerHTML = '--';
+      wordNameDOM.innerHTML = ``;
+      wordMeanDOM.innerHTML = ``;
+      wordPartOfSpeechDOM.innerHTML = ``;
+      wordPhoneticsDOM.innerHTML = '';
+      wordProgressDOM.innerHTML = '';
       wordProgressDOM.className = `small`;
-      wordCategoryDOM.innerHTML = '--';
+      wordCategoryDOM.innerHTML = '';
       return;
     }
   }
@@ -103,6 +104,7 @@ function showRandom(index) {
   wordPartOfSpeechDOM.innerHTML = word.partOfSpeech ? word.partOfSpeech : '--';
   wordPhoneticsDOM.innerHTML = word.phonetics ? word.phonetics : '--';
   wordCategoryDOM.innerHTML = word.category ? word.category.name : '--';
+  saveFormDOM.action = `/write/save-write-article/${word._id}`;
 }
 
 async function fetchWordsRandom() {
