@@ -284,3 +284,24 @@ footer {
  
     outline: #1f2937;
 }
+
+/* contact ----------------------------------------------------------*/
+
+.contact-form {
+    background-color: #1F2937;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.contact-input {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.heigh-contact {
+    height: 88.4vh;
+}
+
+textarea {
+    resize: none;
+}

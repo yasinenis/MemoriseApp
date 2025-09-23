@@ -3,13 +3,23 @@
 <body class="inter-my">
     <%- include('partials/_navigation'); %>
 
-    <div class="container mt-4">
-        <div class="row mt-4">
+    <div class="container mt-4 heigh-contact">
+        <div class="row mt-4 align-items-center">
             <div class="mt-4 d-flex flex-column align-items-center justify-content-center">
                 <h3 class="mt-4">Get In Touch With Me</h3>
                 <span>If you have any questions, feedback, or just want to say hi, you can contact me here. I’ll respond as soon as I can.</span>
 
-
+                <form action="/contact" method="POST" class="mt-5">
+                    <div class="contact-form mb-4">
+                        <div class="d-flex">
+                            <input type="text" placeholder="Your Name" class="contact-input me-4">
+                            <input type="email" placeholder="Your Mail" class="contact-input ms-4">
+                        </div>
+                        <textarea rows="12" name="" id="" class="contact-input mt-3 w-100" placeholder="Give me more details.."></textarea>
+                        <button class="btn btn-warning mt-2"><i class="fa-solid fa-dove"></i> Send</button>
+                    </div>
+                    
+                </form>
             </div>
         </div>
     </div>
