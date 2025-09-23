@@ -42,6 +42,12 @@
     border-color: #10B981;
 }
 
+.btn-collapse-red:hover { 
+  color: #EF4444; 
+  border-color: #EF4444; 
+}
+
+
 .navbar a {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700; /* kalın */

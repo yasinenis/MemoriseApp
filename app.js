@@ -18,6 +18,7 @@ import userRoute from './routes/userRoute.js';
 import learnRoute from './routes/learnRoute.js';
 import dashboardRoute from './routes/dashboardRoute.js';
 import writeRoute from './routes/writeRoute.js';
+import contactRoute from './routes/contactRoute.js';
 
 const app = express();
 
@@ -65,6 +66,7 @@ app.use('/users', userRoute);
 app.use('/learn', learnRoute);
 app.use('/dashboard', dashboardRoute);
 app.use('/write', writeRoute);
+app.use('/contact', contactRoute);
 
 const port = 3000;
 

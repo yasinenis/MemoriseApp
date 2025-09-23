@@ -156,3 +156,20 @@ changeButtonDOM.addEventListener('click', () => {
   currentIndex++;
   showRandom(currentIndex);
 });
+
+saveFormDOM.addEventListener('submit', function (event) {
+  const textArea = document.getElementById('textArea');
+  if (textArea.value.trim().length < 150) {
+    event.preventDefault();
+    showAlert();
+  }
+});
+
+function showAlert() {
+  const alertMinCharacterDOM = document.getElementById('alertMinChar');
+  alertMinCharacterDOM.classList.remove('d-none');
+
+  setTimeout(() => {
+    alertMinCharacterDOM.classList.add('d-none');
+  }, 2000);
+}

@@ -9,3 +9,7 @@ export async function getRegisterPage(req, res) {
 export async function getLoginPage(req, res) {
   res.status(200).render('login', { pageName: 'login' });
 }
+
+export async function getContactPage(req, res) {
+  res.status(200).render('contact', { pageName: 'contact' });
+}
