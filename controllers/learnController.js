@@ -189,7 +189,7 @@ export async function forgotWord(req, res) {
         progress: { $gt: 0 },
       },
       {
-        $inc: { progress: -1 },
+        $set: { progress: 0 },
       }
     );
     res.status(200).json({ status: 'success' });
