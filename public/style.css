@@ -41,9 +41,20 @@
     border: 1px solid #10B981;
     padding: 5px;
     border-radius: 5px;
+    background-color: #10B981;
     border-color: #10B981;
-    color: #10B981;
+    color: #1f2937;
 }
+
+.btn-collapse-user:hover {
+    border: 1px solid #10B981;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #10B981;
+    border-color: #10B981;
+    color: #1f2937;
+}
+
 .btn-collapse-logout {
     border: 1px solid #EF4444;
     padding: 5px;
@@ -63,6 +74,23 @@
   border-color: #EF4444; 
 }
 
+.btn-collapse-register {
+    border: 1px solid #F97316;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #F97316;
+    border-color: #F97316;
+    color: #1f2937;
+}
+
+.btn-collapse-register:hover {
+    border: 1px solid #F97316;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #F97316;
+    border-color: #F97316;
+    color: #1f2937;
+}
 
 .navbar a {
   font-family: 'Montserrat', sans-serif;
@@ -102,11 +130,11 @@ nav {
 }
 
 .my-border {
-    border: 1px solid black;
+    border: 0px solid black;
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 50px;
-    background-color: rgba(255, 255, 255, 0.5);
+    /*background-color: rgba(255, 255, 255, 0.5); */
 }
 
 .start-btn {

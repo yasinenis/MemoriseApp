@@ -43,6 +43,8 @@ async function showWord(index) {
     }
   }
 
+  frontWordDOM.classList.remove('d-none');
+  backWordDOM.classList.add('d-none');
   categoryDOM.innerText = word.category.name;
   wordDOM.innerText = word.word;
   meaningDOM.innerText = word.meaning;

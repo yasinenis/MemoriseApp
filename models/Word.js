@@ -23,6 +23,9 @@ const WordSchema = new Schema({
     type: Number,
     default: 0,
   },
+  sentence: {
+    type: String,
+  },
   lastRemembered: {
     type: Date,
   },
