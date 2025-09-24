@@ -37,6 +37,22 @@
     border-color: white;
 }
 
+.btn-collapse-user {
+    border: 1px solid #10B981;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #10B981;
+    color: #10B981;
+}
+.btn-collapse-logout {
+    border: 1px solid #EF4444;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #EF4444;
+    color: #EF4444;
+
+}
+
 .btn-collapse:hover {
     color: #10B981;
     border-color: #10B981;
