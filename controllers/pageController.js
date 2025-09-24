@@ -11,5 +11,9 @@ export async function getLoginPage(req, res) {
 }
 
 export async function getContactPage(req, res) {
-  res.status(200).render('contact', { pageName: 'contact' });
+  res.status(200).render('contact', {
+    pageName: 'contact',
+    username: req.session.username,
+    useremail: req.session.email,
+  });
 }

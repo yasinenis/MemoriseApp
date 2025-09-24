@@ -56,6 +56,7 @@ app.use(
 app.use((req, res, next) => {
   res.locals.userIN = req.session.userID;
   res.locals.username = req.session.username;
+  res.locals.email = req.session.email;
   next();
 });
 

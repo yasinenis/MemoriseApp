@@ -38,6 +38,7 @@ export async function loginUser(req, res) {
     // USER SESSION
     req.session.userID = user._id;
     req.session.username = user.name;
+    req.session.email = user.email;
 
     res.status(201).redirect('/dashboard');
   } catch (err) {
