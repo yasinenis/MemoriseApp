@@ -1,4 +1,3 @@
-import { text } from 'express';
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
@@ -39,6 +38,11 @@ const WordSchema = new Schema({
   phonetics: {
     type: String,
   },
+  rememberHistory: [
+    {
+      type: Date,
+    },
+  ],
   masteredHistory: [
     {
       type: Date,
