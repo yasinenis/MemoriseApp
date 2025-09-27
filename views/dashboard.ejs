@@ -3,11 +3,26 @@
 <body class="inter-my">
     <%- include('partials/_navigation'); %>
 
-    <div class="container mt-4 mb-4 border-start border-end min-heigh-vh">
+    <div class="container mt-4 text-center">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-1 dash-cover-remembered rounded d-flex flex-column me-1">
+                <div>Ready to Learn</div>
+                <div>50</div>
+            </div>
+            <div class="col-1 dash-cover-remembered rounded-1 d-flex flex-column">
+                <div>Learning</div>
+                <div>50</div>
+            </div>
+            <div class="col-1">Writed</div>
+            <div class="col-1">Learned</div>
+        </div>
+    </div>
+    <div class="container mt-4 mb-4 min-heigh-vh">
         <div class="row mt-5 justify-content-center">
             <div class="col-6 d-flex flex-column justify-content-center">
+                <!-- 
                 <h2 class="d-flex justify-content-center text-theme-1">Have a good work &nbsp; <span class="text-success">{ </span> <%= username %> <span class="text-success"> }</span> &nbsp !</h2>
-                <hr>
+                -->
                 <div class="dropdown mt-4">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Period
@@ -24,8 +39,6 @@
                     <canvas id="monthlyChart" class="d-none" width="400" height="200"></canvas>
                     <canvas id="yearlyChart" class="d-none" width="400" height="200"></canvas>
                 </div>
-
-
             </div>
         </div>
     </div>

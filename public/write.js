@@ -43,22 +43,22 @@ function showRandom(index) {
     0: { class: 'color-new', label: 'New', border: 'border-new' },
     1: {
       class: 'color-remembered',
-      label: 'Progress 1',
+      label: 'Learner 1',
       border: 'border-remembered',
     },
     2: {
       class: 'color-remembered',
-      label: 'Progress 2',
+      label: 'Learner 2',
       border: 'border-remembered',
     },
     3: {
       class: 'color-remembered',
-      label: 'Progress 3',
+      label: 'Learner 3',
       border: 'border-remembered',
     },
     4: {
       class: 'color-remembered',
-      label: 'Progress 4',
+      label: 'Learner 4',
       border: 'border-remembered',
     },
     5: {

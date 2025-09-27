@@ -323,6 +323,22 @@ footer {
     padding-left: 5px;
 }
 
+.border-learned {
+    color: rgb(255, 165, 0) !important;
+    padding: 2px;
+    border: 1px solid rgb(255, 165, 0);
+    border-radius: 20px;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.dash-cover-remembered {
+    border: 1px solid #fcbd4a;
+    color: #fcbd4a;
+    justify-content: center;
+    align-items: center;
+}
+
 /* write ----------------------------------------------------------*/
 .border-write-word {
     border: 1px solid #1F2937;
