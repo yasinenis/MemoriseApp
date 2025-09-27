@@ -28,17 +28,32 @@ async function calculateYearlyData(req, monthIndex) {
 
   const targetRemembered = await Word.countDocuments({
     user: userId,
-    rememberHistory: { $gte: firstDay, $lte: lastDay },
+    rememberHistory: {
+      $elemMatch: {
+        $gte: firstDay,
+        $lte: lastDay,
+      },
+    },
   });
 
   const targetMastered = await Word.countDocuments({
     user: userId,
-    masteredHistory: { $gte: firstDay, $lte: lastDay },
+    masteredHistory: {
+      $elemMatch: {
+        $gte: firstDay,
+        $lte: lastDay,
+      },
+    },
   });
 
   const targetWritten = await Word.countDocuments({
     user: userId,
-    writtenHistory: { $gte: firstDay, $lte: lastDay },
+    writtenHistory: {
+      $elemMatch: {
+        $gte: firstDay,
+        $lte: lastDay,
+      },
+    },
   });
 
   return { targetNew, targetRemembered, targetMastered, targetWritten };
@@ -103,17 +118,32 @@ async function calculateOneMonth(req, monthOffset = 0) {
 
     const targetRemembered = await Word.countDocuments({
       user: userId,
-      rememberHistory: { $gte: start, $lte: end },
+      rememberHistory: {
+        $elemMatch: {
+          $gte: start,
+          $lte: end,
+        },
+      },
     });
 
     const targetMastered = await Word.countDocuments({
       user: userId,
-      masteredHistory: { $gte: start, $lte: end },
+      masteredHistory: {
+        $elemMatch: {
+          $gte: start,
+          $lte: end,
+        },
+      },
     });
 
     const targetWritten = await Word.countDocuments({
       user: userId,
-      writtenHistory: { $gte: start, $lte: end },
+      writtenHistory: {
+        $elemMatch: {
+          $gte: start,
+          $lte: end,
+        },
+      },
     });
 
     dailyDataOfMonth.push({
@@ -161,17 +191,32 @@ async function calculateWeekly(req, targetDay) {
 
   const targetRemembered = await Word.countDocuments({
     user: userId,
-    rememberHistory: { $gte: targetDateStart, $lte: targetDateEnd },
+    rememberHistory: {
+      $elemMatch: {
+        $gte: targetDateStart,
+        $lte: targetDateEnd,
+      },
+    },
   });
 
   const targetMastered = await Word.countDocuments({
     user: userId,
-    masteredHistory: { $gte: targetDateStart, $lte: targetDateEnd },
+    masteredHistory: {
+      $elemMatch: {
+        $gte: targetDateStart,
+        $lte: targetDateEnd,
+      },
+    },
   });
 
   const targetWritten = await Word.countDocuments({
     user: userId,
-    writtenHistory: { $gte: targetDateStart, $lte: targetDateEnd },
+    writtenHistory: {
+      $elemMatch: {
+        $gte: targetDateStart,
+        $lte: targetDateEnd,
+      },
+    },
   });
   return { targetNew, targetRemembered, targetMastered, targetWritten };
 }
