@@ -332,9 +332,30 @@ footer {
     padding-left: 5px;
 }
 
-.dash-cover-remembered {
-    border: 1px solid #fcbd4a;
-    color: #fcbd4a;
+.dash-cover-timeToLearn {
+    border: 1px solid #6fbbef;
+    color: #6fbbef;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash-cover-writed {
+    border: 1px solid #b491fd;
+    color: #b491fd;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash-cover-mastered {
+    border: 1px solid #7ed0d1;
+    color: #7ed0d1;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash-cover-totalWords {
+    border: 1px solid #1E40AF;
+    color: #1E40AF;
     justify-content: center;
     align-items: center;
 }
