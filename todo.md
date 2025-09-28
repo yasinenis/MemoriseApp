@@ -1,0 +1,34 @@
+# todo list
+
+#### learning page
+- [ ]  ask words again as flipped before increase process level of word .
+- [ ]  add phonetics bottom of the word on learning page.
+- [ ]  add sentence property of words
+  - [ ]  sentence can be shown with a sentence button in learning page
+  - [ ]  sentence can be added and updated while adding a word on the word page.
+  - [ ]  sentence should be shown on the word page.
+  - [ ]  sentence should be shown on the write page.
+- [ ]  hint button for additional description in word card.
+#### words page
+- [ ]  words and category places should be changed.
+- [ ]  word & category list frontend change
+- [ ]  export/import words option for wordlist and categories. (memoris and from other platforms.)
+- [ ]  additional description option for word list
+#### dashboard page
+- [ ]  leaderboard should be added for writed, total word, mastered statistics.
+- [ ]  dashboard frontend
+#### write page
+- [ ]  increase minimum character limit.
+#### home page
+- [ ]  change level picture.
+#### footer
+- [ ]  add source of picture to footer.
+- [ ]  social media, contact, etc. informations will be added to footer.
+#### navigation
+- [ ]  register & login button frontend design
+#### general
+- [ ]  responsible design for mobile
+- [ ]  logo design
+- [ ]  error / info notifications
+
+
