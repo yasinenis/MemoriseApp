@@ -2,7 +2,7 @@
 
 #### learning page
 - [ ]  ask words again as flipped before increase process level of word .
-- [ ]  add phonetics bottom of the word on learning page.
+- [x]  add phonetics bottom of the word on learning page.
 - [ ]  add sentence property of words
   - [ ]  sentence can be shown with a sentence button in learning page
   - [ ]  sentence can be added and updated while adding a word on the word page.

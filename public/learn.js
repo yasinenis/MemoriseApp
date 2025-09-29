@@ -20,6 +20,7 @@ const forgotBtnDOM = document.getElementById('forgotBtn');
 const addWordsBtnDOM = document.getElementById('addWordsBtn');
 const progressIconDOM = document.getElementById('progress-icon');
 const progressDOM = document.getElementById('progress');
+const phoneticDOM = document.getElementById('phonetic');
 
 startPage();
 isThereEvenOneWord();
@@ -37,6 +38,7 @@ async function showWord(index) {
     if (!word) {
       categoryDOM.innerText = '';
       wordDOM.innerText = 'All ╰(*°▽°*)╯ Done !';
+      phoneticDOM.innerText = '';
       meaningDOM.innerText = "Words will be here (●'◡'●) soon.";
       noWords();
       return;
@@ -47,6 +49,7 @@ async function showWord(index) {
   backWordDOM.classList.add('d-none');
   categoryDOM.innerText = word.category.name;
   wordDOM.innerText = word.word;
+  phoneticDOM.innerText = word.phonetics ? `/${word.phonetics}/` : '';
   meaningDOM.innerText = word.meaning;
   forgotBtnDOM.href = 'learn/forgot/' + wordsNeedStudy[index]._id;
 
@@ -172,6 +175,7 @@ async function refreshWords() {
 }
 
 function noWords() {
+  phoneticDOM.classList.add('d-none');
   addWordsBtnDOM.classList.remove('d-none'); // görün
   forgotBtnDOM.classList.add('d-none');
   rememberedBtnDOM.classList.add('d-none');
@@ -182,6 +186,7 @@ function noWords() {
 }
 
 function yesWords() {
+  phoneticDOM.classList.remove('d-none');
   addWordsBtnDOM.classList.add('d-none');
   forgotBtnDOM.classList.remove('d-none');
   rememberedBtnDOM.classList.remove('d-none');
@@ -192,6 +197,7 @@ function yesWords() {
 }
 
 function startPage() {
+  phoneticDOM.classList.add('d-none');
   addWordsBtnDOM.classList.add('d-none');
   forgotBtnDOM.classList.add('d-none');
   rememberedBtnDOM.classList.add('d-none');
