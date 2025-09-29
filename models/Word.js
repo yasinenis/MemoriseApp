@@ -67,6 +67,8 @@ const WordSchema = new Schema({
   },
 });
 
+WordSchema.index({ word: 1, user: 1 }, { unique: true });
+
 const Word = mongoose.model('Word', WordSchema);
 
 export default Word;
