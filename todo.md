@@ -10,10 +10,11 @@
   - [ ]  sentence should be shown on the write page.
 - [ ]  hint button for additional description in word card.
 #### words page
-- [ ]  words and category places should be changed.
+- [x]  words and category places should be changed.
 - [ ]  word & category list frontend change
 - [ ]  export/import words option for wordlist and categories. (memoris and from other platforms.)
 - [ ]  additional description option for word list
+- [ ]  add emoji to add word and update button inputs.
 #### dashboard page
 - [ ]  leaderboard should be added for writed, total word, mastered statistics.
 - [ ]  dashboard frontend
@@ -30,5 +31,6 @@
 - [ ]  responsible design for mobile
 - [ ]  logo design
 - [ ]  error / info notifications
+- [ ] while writing inputs, placeholder or etc will slide up.
 
 
