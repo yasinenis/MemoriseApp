@@ -1,0 +1,22 @@
+/* write ----------------------------------------------------------*/
+.border-write-word {
+    border: 1px solid #1F2937;
+    border-radius: 5px;
+    background-color: white;
+    height: 385.5px;
+}
+
+.height-gap {
+  min-height: 57.8vh !important;
+}
+
+.write-input-control {
+    width: 1100px;
+    resize: none;
+    border-left: 0px;
+}
+
+.write-input-control:focus {
+ 
+    outline: #1f2937;
+}

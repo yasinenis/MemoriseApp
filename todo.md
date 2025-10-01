@@ -15,6 +15,7 @@
 - [ ]  export/import words option for wordlist and categories. (memoris and from other platforms.)
 - [ ]  additional description option for word list
 - [ ]  add emoji to add word and update button inputs.
+- [ ]  pagging will be added
 #### dashboard page
 - [ ]  leaderboard should be added for writed, total word, mastered statistics.
 - [ ]  dashboard frontend

@@ -1,0 +1,20 @@
+/* home ----------------------------------------------------------*/
+.back-span {
+    color: #10B981;
+}
+
+.cover-img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    margin-bottom: 50px;
+}
+
+.cover {
+    width: 100%;
+    background-color: #1F2937;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}

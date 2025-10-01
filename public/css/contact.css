@@ -1,0 +1,20 @@
+/* contact ----------------------------------------------------------*/
+
+.contact-form {
+    background-color: #1F2937;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.contact-input {
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.heigh-contact {
+    height: 88.4vh;
+}
+
+textarea {
+    resize: none;
+}
