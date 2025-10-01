@@ -281,3 +281,65 @@ export async function getWeeklyChartInfo(req, res) {
     });
   }
 }
+
+/* head statistics */
+
+async function totalWords(req, res) {
+  try {
+    const totalWords = await Word.countDocuments({ user: req.session.userID });
+    return totalWords;
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
+
+async function masteredWords(req, res) {
+  try {
+    const masteredWords = await Word.countDocuments({
+      user: req.session.userID,
+      progress: { $gte: 5 },
+    });
+    return masteredWords;
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
+
+async function writtenWords(req, res) {
+  try {
+    const writtenWords = await Word.countDocuments({
+      user: req.session.userID,
+      written: true,
+    });
+    return writtenWords;
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}
+
+export async function headStatistics(req, res) {
+  try {
+    const totalWordsCount = await totalWords(req, res);
+    const masteredWordsCount = await masteredWords(req, res);
+    const writtenWordsCount = await writtenWords(req, res);
+    res.status(200).json({
+      totalWordsCount,
+      masteredWordsCount,
+      writtenWordsCount,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      err,
+    });
+  }
+}

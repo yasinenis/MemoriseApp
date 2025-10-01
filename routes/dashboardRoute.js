@@ -9,5 +9,6 @@ router.route('/').get(authMiddleware, dashboardController.getDashboardPage); // 
 router.route('/fetch-chart-weekly').get(dashboardController.getWeeklyChartInfo);
 router.route('/fetch-chart-monthly').get(dashboardController.getMonthChartInfo);
 router.route('/fetch-chart-yearly').get(dashboardController.getYearlyChartInfo);
+router.route('/headStatistics').get(dashboardController.headStatistics);
 
 export default router;

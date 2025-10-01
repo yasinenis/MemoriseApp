@@ -7,6 +7,8 @@ const weeklyChartDOM = document.getElementById('weeklyChart');
 const monthlyChartDOM = document.getElementById('monthlyChart');
 const yearlyChartDOM = document.getElementById('yearlyChart');
 
+fetchHeadStatistics();
+
 myCharts.weeklyChart();
 
 viewWeeklyDOM.addEventListener('click', weeklyHandler);
@@ -34,4 +36,34 @@ function yearlyHandler() {
   yearlyChartDOM.classList.remove('d-none');
   monthlyChartDOM.classList.add('d-none');
   myCharts.yearlyChart();
+}
+
+/* head statistics */
+async function fetchHeadStatistics() {
+  try {
+    const res = await fetch('/dashboard/headStatistics');
+    if (res.ok) {
+      const data = await res.json();
+      const totalWordsCount = data.totalWordsCount;
+      const masteredWordsCount = data.masteredWordsCount;
+      const writtenWordsCount = data.writtenWordsCount;
+      document.querySelector('.totalWords').textContent = totalWordsCount;
+      document.querySelector('.masteredWords').textContent = masteredWordsCount;
+      document.querySelector('.writtenWords').textContent = writtenWordsCount;
+    } else {
+      console.log('could not fetch head statistics', res.status);
+    }
+
+    const wordRes = await fetch('/learn/fetch-words');
+    if (wordRes.ok) {
+      const data = await wordRes.json();
+      const wordsNeedLearnCount = data.length;
+      document.querySelector('.wordsNeedLearn').textContent =
+        wordsNeedLearnCount;
+    } else {
+      console.log('coult not fetch words', wordRes.status);
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
+  }
 }
