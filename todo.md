@@ -18,7 +18,7 @@
 - [ ]  pagging will be added
 #### dashboard page
 - [ ]  leaderboard should be added for writed, total word, mastered statistics.
-- [ ]  dashboard frontend
+- [x]  dashboard frontend
 #### write page
 - [ ]  increase minimum character limit.
 #### home page
@@ -32,6 +32,7 @@
 - [ ]  responsible design for mobile
 - [ ]  logo design
 - [ ]  error / info notifications
-- [ ] while writing inputs, placeholder or etc will slide up.
+- [ ]  while writing inputs, placeholder or etc will slide up.
+- [ ]  admin panel
 
 
