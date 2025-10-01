@@ -175,5 +175,13 @@ footer {
     cursor: pointer;
 }
 
+.text-theme-green-me{
+    color: #10B981;
+}
+
+.bg-theme-green-mee{
+    background-color: #10B981;
+}
+
 
 

@@ -12,18 +12,18 @@
                     <div class="d-flex">
                         <div class="dropdown align-items-center d-flex me-2">
                             <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 200px;">
-                                <i class="fa-solid fa-box-archive"></i>
+                                <i class="fa-solid fa-boxes-stacked"></i>
                                 <%= categorySlug ? categories.find(cat => cat.slug === categorySlug).name : 'All Categories' %>
                             </button>
                             <ul class="dropdown-menu">
                                 <li class="d-flex align-items-center px-2">
-                                    <i class="fa-solid fa-box-archive"></i>
+                                    <i class="fa-solid fa-boxes-stacked"></i>
                                     <a class="dropdown-item" href="/words">All</a>
                                 </li>
                                 <hr>
                                 <% for(let i=0; i< categories.length; i++) { %>
                                 <li class="d-flex align-items-center px-2">
-                                    <i class="fa-solid fa-box-archive me-auto"></i>
+                                    <i class="fa-solid fa-boxes-stacked me-auto"></i>
                                     <a class="dropdown-item" href="/words/?categories=<%= categories[i].slug %>"><%= categories[i].name %></a>
                                     <% if(categories[i].name !== 'Uncategorized') { %>
                                     <a data-bs-toggle="modal" data-bs-target="#editCategoryModal-<%= categories[i]._id %>" class="categoryEditBtn d-none btn btn-warning rounded-end-0" style="padding: 0px;" ><i class="fa-regular fa-pen-to-square"></i></a>
@@ -82,7 +82,7 @@
                           <th scope="col">Part of speech</th>
                           <th scope="col">Phonetics</th>
                           <th scope="col">Progress</th>
-                          <th scope="col">Category</th>
+                          <th scope="col"><i class="fa-solid fa-boxes-stacked"></i> Category</th>
                           <th scope="col"></th>
                         </tr>
                     </thead>
@@ -136,16 +136,31 @@
                                     <div class="modal-body p-3">
                                         <form method="POST" action="/words/editWord/<%= words[i]._id %>?_method=PUT">
                                             <div class="d-flex flex-column justify-content-center p-3">
-                                            <input type="text" value="<%= words[i].word %>" name="word" placeholder="Word" class="mb-4 p-3">
-                                            <input type="text" value="<%= words[i].meaning %>" name="meaning" placeholder="Meaning" class="mb-4 p-3">
-                                            <input type="text" value="<%= words[i].partOfSpeech %>" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3">
-                                            <input type="text" value="<%= words[i].phonetics %>" name="phonetics" placeholder="Phonetics" class="mb-4 p-2">
-                                            <select type="text" name="category" placeholder="Category" class="mb-4 p-3">                        
-                                                <% for(let j = 0; j< categories.length; j++) { %>
-                                                <option <%= words[i].category._id.equals(categories[j]._id) ? "selected" : " " %> value="<%= categories[j]._id %>"><%= categories[j].name %></option>
-                                                <% } %>
-
-                                            </select>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-language fa-2x mb-4 me-2"></i>
+                                                    <input type="text" value="<%= words[i].word %>" name="word" placeholder="Word" class="mb-4 p-3 w-100">
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-signs-post fa-2x mb-4 me-2"></i>
+                                                    <input type="text" value="<%= words[i].meaning %>" name="meaning" placeholder="Meaning" class="mb-4 p-3 w-100">
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-ear-listen fa-2x mb-4 me-2"></i>
+                                                    <input type="text" value="<%= words[i].phonetics %>" name="phonetics" placeholder="Phonetics" class="mb-4 p-3 w-100">
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-spell-check fa-2x mb-4 me-2"></i>
+                                                    <input type="text" value="<%= words[i].partOfSpeech %>" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3 w-100">
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-boxes-stacked fa-2x mb-4 me-2"></i>
+                                                    <select type="text" name="category" placeholder="Category" class="mb-4 p-3 w-100">                        
+                                                    <% for(let j = 0; j< categories.length; j++) { %>
+                                                        <option <%= words[i].category._id.equals(categories[j]._id) ? "selected" : " " %> value="<%= categories[j]._id %>"><%= categories[j].name %></option>
+                                                    <% } %>
+                                                </select>
+                                                </div>
+                                                
                                             </div>
                                             <div>
                                                 <button type="submit" class="btn btn-warning rounded-0">UPDATE</button>
@@ -177,15 +192,32 @@
                 <div class="modal-body p-3">
                     <form method="POST" action="/words/addWord">
                         <div class="d-flex flex-column justify-content-center p-3">
-                        <input type="text" name="word" placeholder="Word" class="mb-4 p-3">
-                        <input type="text" name="meaning" placeholder="Meaning" class="mb-4 p-3">
-                        <input type="text" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3">
-                        <input type="text" name="phonetics" placeholder="Phonetics" class="mb-4 p-3">
-                        <select type="text" name="category" placeholder="Category" class="mb-4 p-3">
-                        <% for(let i = 0; i< categories.length; i++) { %>
-                            <option value="<%= categories[i]._id %>"><%= categories[i].name %></option>
-                        <% } %>
-                        </select>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-language fa-2x me-2 mb-4"></i>
+                                <input type="text" name="word" placeholder="Word" class="mb-4 p-3 w-100">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-signs-post fa-2x me-2 mb-4"></i>
+                                <input type="text" name="meaning" placeholder="Meaning" class="mb-4 p-3 w-100">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-ear-listen fa-2x me-2 mb-4"></i>
+                                <input type="text" name="phonetics" placeholder="Phonetics" class="mb-4 p-3 w-100">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-spell-check fa-2x me-2 mb-4"></i>
+                                <input type="text" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3 w-100">
+                            </div>
+                            
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-boxes-stacked fa-2x me-2 mb-4"></i>
+                                <select type="text" name="category" placeholder="Category" class="mb-4 p-3 w-100">
+                                <% for(let i = 0; i< categories.length; i++) { %>
+                                    <option value="<%= categories[i]._id %>"><%= categories[i].name %></option>
+                                <% } %>
+                                </select>
+                            </div>
+                        
                         </div>
                         <div>
                             <button type="submit" class="btn btn-success rounded-0">ADD</button>
