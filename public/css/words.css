@@ -34,4 +34,13 @@
     color: white;
 }
 
+.wordEditBtn{
+    padding: 0px;
+    padding-top: 0px;
+}
+
+.wordDeleteBtn {
+    padding: 0px;
+    padding-top: 0px;
+}
 
