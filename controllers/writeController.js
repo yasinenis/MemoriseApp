@@ -28,13 +28,27 @@ export async function saveWriteArticle(req, res) {
       user: req.session.userID,
     });
 
-    writtenWord.writeText = userText;
-    writtenWord.written = true;
-    writtenWord.writtenHistory = new Date();
+    if (!writtenWord) {
+      return res
+        .status(404)
+        .json({ status: 'fail', message: 'Word not found' });
+    }
 
-    await writtenWord.save();
+    const normalizedText = userText.replace(/\s+/g, ' ');
+    if (normalizedText.length >= 1000) {
+      writtenWord.writeText = userText;
+      writtenWord.written = true;
+      writtenWord.writtenHistory = new Date();
 
-    res.status(200).redirect('/write');
+      await writtenWord.save();
+
+      res.status(200).redirect('/write');
+      return;
+    }
+
+    throw new Error(
+      "Text must be at least 1000 characters long. Don't cheat :)"
+    );
   } catch (error) {
     res.status(400).json({
       status: 'fail',

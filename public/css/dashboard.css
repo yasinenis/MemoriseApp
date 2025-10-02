@@ -133,6 +133,13 @@
     text-align: center;
 }
 
+.dashboard-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+}
+
 .leaderboard-border-mastered {
     border: 1px solid #7ed0d1;
     padding-top: 10px;

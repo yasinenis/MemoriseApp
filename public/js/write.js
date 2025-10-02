@@ -6,6 +6,8 @@ const wordCategoryDOM = document.getElementById('category');
 const wordProgressDOM = document.getElementById('progress');
 const changeButtonDOM = document.getElementById('changeButton');
 const saveFormDOM = document.getElementById('saveForm');
+const charCountDOM = document.getElementById('charCount');
+const textAreaDOM = document.getElementById('textArea');
 
 const doneModal = new bootstrap.Modal(
   document.getElementById('doneExerciseModal')
@@ -159,7 +161,10 @@ changeButtonDOM.addEventListener('click', () => {
 
 saveFormDOM.addEventListener('submit', function (event) {
   const textArea = document.getElementById('textArea');
-  if (textArea.value.trim().length < 150) {
+
+  const normalized = textArea.value.replace(/\s+/g, ' ');
+
+  if (normalized.length < 1000) {
     event.preventDefault();
     showAlert();
   }
@@ -173,3 +178,13 @@ function showAlert() {
     alertMinCharacterDOM.classList.add('d-none');
   }, 2000);
 }
+
+textAreaDOM.addEventListener('input', () => {
+  const normalized = textAreaDOM.value.replace(/\s+/g, ' ');
+  charCountDOM.textContent = normalized.length;
+  if (normalized.length >= 1000) {
+    charCountDOM.style.color = 'green';
+  } else {
+    charCountDOM.style.color = 'red';
+  }
+});

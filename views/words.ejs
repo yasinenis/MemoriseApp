@@ -11,9 +11,14 @@
                     <h2 class="ms-2">Words</h2> 
                     <div class="d-flex">
                         <div class="dropdown align-items-center d-flex me-2">
-                            <button class="btn btn-info dropdown-toggle text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 300px;">
-                                <i class="fa-solid fa-boxes-stacked"></i>
-                                <%= categorySlug ? categories.find(cat => cat.slug === categorySlug).name : 'All Categories' %>
+                            <button class="btn btn-info dropdown-toggle d-flex justify-content-between align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 200px; overflow: hidden; white-space:nowrap;">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-boxes-stacked me-2"></i>
+                                    <span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 130px;" title="<%= categorySlug ? categories.find(cat => cat.slug === categorySlug).name : 'All Categories' %>" data-bs-toggle="tooltip" data-bs-placement="top">
+                                        <%= categorySlug ? categories.find(cat => cat.slug === categorySlug).name : 'All Categories' %>
+                                    </span>
+                                    
+                                </div>
                             </button>
                             <ul class="dropdown-menu">
                                 <li class="d-flex align-items-center px-2">

@@ -17,6 +17,7 @@ function weeklyHandler() {
   weeklyChartDOM.classList.remove('d-none');
   yearlyChartDOM.classList.add('d-none');
   monthlyChartDOM.classList.add('d-none');
+  document.getElementById('periodBtn').innerHTML = 'Weekly';
   myCharts.weeklyChart();
 }
 
@@ -26,6 +27,7 @@ function monthlyHandler() {
   weeklyChartDOM.classList.add('d-none');
   yearlyChartDOM.classList.add('d-none');
   monthlyChartDOM.classList.remove('d-none');
+  document.getElementById('periodBtn').innerHTML = 'Monthly';
   myCharts.monthlyChart();
 }
 
@@ -35,6 +37,7 @@ function yearlyHandler() {
   weeklyChartDOM.classList.add('d-none');
   yearlyChartDOM.classList.remove('d-none');
   monthlyChartDOM.classList.add('d-none');
+  document.getElementById('periodBtn').innerHTML = 'Yearly';
   myCharts.yearlyChart();
 }
 

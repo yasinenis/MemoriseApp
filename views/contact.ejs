@@ -12,8 +12,14 @@
                 <form action="contact/contact-mail" method="POST" class="mt-5">
                     <div class="contact-form shadow mb-4">
                         <div class="d-flex">
-                            <input id="nameInput" type="text" name="name" placeholder="Your Name" class="contact-input me-4" value="<%= username ? username : '' %>" required>
-                            <input id="emailInput" type="email" name="email" placeholder="Your Mail" class="contact-input ms-4" value="<%= useremail ? useremail : '' %>" required>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-user fa-3x me-2 text-light"></i>
+                                <input id="nameInput" type="text" name="name" placeholder="Your Name" class="contact-input me-4" value="<%= username ? username : '' %>" required>
+                            </div>
+                            <div class="d-flex align-items-center ms-4">
+                                <i class="fa-solid fa-envelope fa-3x me-2 text-light"></i>
+                                <input id="emailInput" type="email" name="email" placeholder="Your Mail" class="contact-input" value="<%= useremail ? useremail : '' %>" required>
+                            </div>
                         </div>
                         <textarea name="message" rows="12" name="" id="" class="contact-input mt-3 w-100" placeholder="Give me more details.." required></textarea>
                         <button id="sendMailBtn" class="btn btn-lg btn-warning mt-2"><i class="fa-solid fa-dove"></i> Send</button>

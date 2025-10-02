@@ -16,11 +16,13 @@
 - [ ]  additional description option for word list
 - [x]  add emoji to add word and update button inputs.
 - [ ]  pagging will be added
+- [ ]  written status. if written show text
 #### dashboard page
 - [ ]  leaderboard should be added for writed, total word, mastered statistics.
 - [x]  dashboard frontend
 #### write page
-- [ ]  increase minimum character limit.
+- [x]  increase minimum character limit.
+- [ ]  written history.
 #### home page
 - [ ]  change level picture.
 #### footer
