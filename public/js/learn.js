@@ -1,6 +1,7 @@
 const wordCardDOM = document.querySelector('.word-card-in');
 const frontWordDOM = document.querySelector('.word-front');
 const backWordDOM = document.querySelector('.word-back');
+const wordCardAllDOM = document.querySelector('.word-card');
 
 wordCardDOM.addEventListener('click', touchHandler);
 
@@ -8,6 +9,19 @@ function touchHandler() {
   frontWordDOM.classList.toggle('d-none');
   backWordDOM.classList.toggle('d-none');
 }
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowUp') {
+    e.preventDefault(); // Prevent scrolling when space is pressed
+    frontWordDOM.classList.add('d-none');
+    backWordDOM.classList.remove('d-none');
+  }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    frontWordDOM.classList.remove('d-none');
+    backWordDOM.classList.add('d-none');
+  }
+});
 
 // next word----------------------------------------------------
 
@@ -207,9 +221,8 @@ function startPage() {
   progressDOM.classList.add('d-none');
 }
 
-rememberedBtnDOM.addEventListener('click', async function (e) {
-  e.preventDefault();
-
+// remember word----------------------------------------------------
+async function rememberCurrentWord() {
   const id = wordsNeedStudy[currentIndex]._id;
 
   try {
@@ -217,16 +230,51 @@ rememberedBtnDOM.addEventListener('click', async function (e) {
     if (res.ok) {
       // process increases
       wordsNeedStudy.splice(currentIndex, 1);
-      showWord(currentIndex); // bir sonraki kelime
+      showWord(currentIndex); // next word
     }
   } catch (err) {
     console.error(err);
   }
-});
+}
 
-forgotBtnDOM.addEventListener('click', async function (e) {
+rememberedBtnDOM.addEventListener('click', async function (e) {
   e.preventDefault();
 
+  // animation
+  rememberedBtnDOM.classList.add('pressed-remember');
+  wordCardAllDOM.classList.add('slide-right');
+  setTimeout(() => {
+    rememberedBtnDOM.classList.remove('pressed-remember');
+    wordCardAllDOM.classList.remove('slide-right');
+  }, 600);
+
+  // next word
+  setTimeout(() => {
+    rememberCurrentWord();
+  }, 600);
+});
+
+document.addEventListener('keydown', async function (e) {
+  if (e.key === 'ArrowRight') {
+    e.preventDefault();
+
+    // animation
+    rememberedBtnDOM.classList.add('pressed-remember');
+    wordCardAllDOM.classList.add('slide-right');
+    setTimeout(() => {
+      rememberedBtnDOM.classList.remove('pressed-remember');
+      wordCardAllDOM.classList.remove('slide-right');
+    }, 600);
+
+    // next word
+    setTimeout(() => {
+      rememberCurrentWord();
+    }, 600);
+  }
+});
+
+// forget word----------------------------------------------------
+async function forgetCurrentWord() {
   const id = wordsNeedStudy[currentIndex]._id;
 
   try {
@@ -240,8 +288,44 @@ forgotBtnDOM.addEventListener('click', async function (e) {
   } catch (err) {
     console.error(err);
   }
+}
+
+forgotBtnDOM.addEventListener('click', async function (e) {
+  e.preventDefault();
+
+  // animation
+  forgotBtnDOM.classList.add('pressed-forgot');
+  wordCardAllDOM.classList.add('slide-left');
+  setTimeout(() => {
+    forgotBtnDOM.classList.remove('pressed-forgot');
+    wordCardAllDOM.classList.remove('slide-left');
+  }, 600);
+  // next word
+  setTimeout(() => {
+    forgetCurrentWord();
+  }, 600);
 });
 
+document.addEventListener('keydown', async function (e) {
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+
+    // animation
+    forgotBtnDOM.classList.add('pressed-forgot');
+    wordCardAllDOM.classList.add('slide-left');
+    setTimeout(() => {
+      forgotBtnDOM.classList.remove('pressed-forgot');
+      wordCardAllDOM.classList.remove('slide-left');
+    }, 600);
+
+    // next word
+    setTimeout(() => {
+      forgetCurrentWord();
+    }, 600);
+  }
+});
+
+// first load----------------------------------------------------
 window.onload = async () => {
   await fetchWords();
 };
