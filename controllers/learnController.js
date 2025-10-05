@@ -151,7 +151,7 @@ export async function rememberedWord(req, res) {
       },
       {
         $inc: { progress: 1 },
-        $set: { lastRemembered: new Date() },
+        $set: { lastRemembered: new Date(), newAdded: false },
         $push: { rememberHistory: new Date() },
       }
     );

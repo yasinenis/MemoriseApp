@@ -102,6 +102,7 @@
                           <td class="text-secondary small text-truncate" style="max-width: 100px;" title="<%= words[i].phonetics ? '/'+words[i].phonetics+'/' : '' %>"><%= words[i].phonetics ? '/'+words[i].phonetics+'/' : '' %></td>
                           <% 
                             const progressMap = {
+                                12: { class: "color-remembered", label: "Re-learn", border: "border-remembered" },
                                 0: { class: "color-new", label: "New", border: "border-new" },
                                 1: { class: "color-remembered", label: "Learner 1", border: "border-remembered" },
                                 2: { class: "color-remembered", label: "Learner 2", border: "border-remembered" },
@@ -115,7 +116,9 @@
                                 10: { class: "color-mastered", label: "Expert", border: "border-mastered" },
                                 11: { class: "color-mastered", label: "Proficient", border: "border-mastered" },
                             };
-
+                            if (words[i].progress == 0 && words[i].newAdded == false) {
+                                words[i].progress = 12;
+                            }
                             const p = progressMap[words[i].progress];
                            %>
                           <td class="<%= p.class %>">

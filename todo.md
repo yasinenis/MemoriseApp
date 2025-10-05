@@ -9,6 +9,7 @@
   - [ ]  sentence should be shown on the word page.
   - [ ]  sentence should be shown on the write page.
 - [ ]  hint button for additional description in word card.
+- [x]  new level bug fix
 #### words page
 - [x]  words and category places should be changed.
 - [ ]  word & category list frontend change

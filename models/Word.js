@@ -56,6 +56,10 @@ const WordSchema = new Schema({
   writeText: {
     type: String,
   },
+  newAdded: {
+    type: Boolean,
+    default: true,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

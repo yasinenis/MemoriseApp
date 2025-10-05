@@ -68,6 +68,12 @@ async function showWord(index) {
   forgotBtnDOM.href = 'learn/forgot/' + wordsNeedStudy[index]._id;
 
   const progressMap = {
+    12: {
+      className: 'color-remembered',
+      text: 'Re-learn',
+      iconClass: 'fa-solid',
+      iconClass2: 'fa-circle',
+    },
     0: {
       text: 'New',
       className: 'color-new',
@@ -135,6 +141,10 @@ async function showWord(index) {
       iconClass2: 'fa-circle',
     },
   };
+
+  if (word.progress === 0 && word.newAdded === false) {
+    word.progress = 12;
+  }
 
   const progressInfo = progressMap[word.progress];
 
