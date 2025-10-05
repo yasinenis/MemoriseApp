@@ -255,7 +255,7 @@ rememberedBtnDOM.addEventListener('click', async function (e) {
 });
 
 document.addEventListener('keydown', async function (e) {
-  if (e.key === 'ArrowRight') {
+  if (e.key === 'ArrowRight' && wordsNeedStudy.length > 0) {
     e.preventDefault();
 
     // animation
@@ -307,7 +307,7 @@ forgotBtnDOM.addEventListener('click', async function (e) {
 });
 
 document.addEventListener('keydown', async function (e) {
-  if (e.key === 'ArrowLeft') {
+  if (e.key === 'ArrowLeft' && wordsNeedStudy.length > 0) {
     e.preventDefault();
 
     // animation
