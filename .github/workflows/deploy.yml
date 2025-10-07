@@ -12,8 +12,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24.5.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
             
       - name: Deploy over SSH
+        if: success()
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -22,5 +34,4 @@ jobs:
           script: |
             cd /home/yasin_enis22/MemoriseApp
             git pull origin main
-            npm install
             sudo pm2 restart memorise
