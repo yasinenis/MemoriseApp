@@ -101,3 +101,7 @@
     animation: slideLeft 0.6s ease forwards;
     border: 1px solid #EF4444;
 }
+
+.hint {
+    background-color: aliceblue;
+}
