@@ -27,6 +27,7 @@ document.addEventListener('keydown', function (e) {
 
 const categoryIconDOM = document.getElementById('category-icon');
 const categoryDOM = document.getElementById('category');
+const hintDOM = document.getElementById('hint-icon');
 const wordDOM = document.getElementById('word');
 const meaningDOM = document.getElementById('meaning');
 const rememberedBtnDOM = document.getElementById('rememberedBtn');
@@ -207,6 +208,7 @@ function noWords() {
   categoryDOM.classList.add('d-none');
   progressIconDOM.classList.add('d-none');
   progressDOM.classList.add('d-none');
+  hintDOM.classList.add('d-none');
 }
 
 function yesWords() {
@@ -218,6 +220,7 @@ function yesWords() {
   categoryDOM.classList.remove('d-none');
   progressIconDOM.classList.remove('d-none');
   progressDOM.classList.remove('d-none');
+  hintDOM.classList.remove('d-none');
 }
 
 function startPage() {
@@ -229,6 +232,7 @@ function startPage() {
   categoryDOM.classList.add('d-none');
   progressIconDOM.classList.add('d-none');
   progressDOM.classList.add('d-none');
+  hintDOM.classList.add('d-none');
 }
 
 // remember word----------------------------------------------------
