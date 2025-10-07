@@ -79,6 +79,7 @@ export async function createWord(req, res) {
     meaning: req.body.meaning,
     partOfSpeech: req.body.partOfSpeech,
     phonetics: req.body.phonetics,
+    sentence: req.body.sentence,
     category: category.id,
     user: req.session.userID,
   });
@@ -132,6 +133,7 @@ export async function editWord(req, res) {
     word.meaning = req.body.meaning;
     word.partOfSpeech = req.body.partOfSpeech;
     word.phonetics = req.body.phonetics;
+    word.sentence = req.body.sentence;
     word.category = req.body.category;
     await word.save();
     res.status(201).redirect('/words');

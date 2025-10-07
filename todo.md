@@ -5,8 +5,8 @@
 - [x]  add phonetics bottom of the word on learning page.
 - [ ]  add sentence property of words
   - [ ]  sentence can be shown with a sentence button in learning page
-  - [ ]  sentence can be added and updated while adding a word on the word page.
-  - [ ]  sentence should be shown on the word page.
+  - [x]  sentence can be added and updated while adding a word on the word page.
+  - [x]  sentence should be shown on the word page.
   - [ ]  sentence should be shown on the write page.
 - [ ]  hint button for additional description in word card.
 - [x]  new level bug fix

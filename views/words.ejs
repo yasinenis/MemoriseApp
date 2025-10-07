@@ -87,6 +87,7 @@
                           <th scope="col">Part of speech</th>
                           <th scope="col">Phonetics</th>
                           <th scope="col">Progress</th>
+                          <th scope="col">Sentence</th>
                           <th scope="col"><i class="fa-solid fa-boxes-stacked"></i> Category</th>
                           <th scope="col"></th>
                         </tr>
@@ -121,12 +122,12 @@
                             }
                             const p = progressMap[words[i].progress];
                            %>
-                          <td class="<%= p.class %>">
+                          <td class="<%= p.class %>" style="max-width: 20px;" >
                             <span class="<%= p.border %> small">
                                 <i class="fa-solid fa-circle small"></i> <%= p.label %>
                             </span>
                           </td>
-                          
+                          <td class="small text-truncate" style="max-width: 10px;" title="<%= words[i].sentence %>" data-bs-toggle="tooltip" data-bs-placement="top"><%= words[i].sentence ? words[i].sentence : "--" %></td>
                           <td class="text-success small"><%= words[i].category ? words[i].category.name : "no category" %></td>
                           <td class="py-0 px-1">
                             <div class="d-flex align-items-center">
@@ -159,6 +160,10 @@
                                                 <div class="d-flex align-items-center">
                                                     <i class="fa-solid fa-spell-check fa-2x mb-4 me-2"></i>
                                                     <input type="text" value="<%= words[i].partOfSpeech %>" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3 w-100">
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-align-left fa-2x mb-4 me-2"></i>
+                                                    <textarea type="text" name="sentence" placeholder="Sentence" class="mb-4 p-3 w-100"><%= words[i].sentence %></textarea>
                                                 </div>
                                                 <div class="d-flex align-items-center">
                                                     <i class="fa-solid fa-boxes-stacked fa-2x mb-4 me-2"></i>
@@ -215,6 +220,10 @@
                             <div class="d-flex align-items-center">
                                 <i class="fa-solid fa-spell-check fa-2x me-2 mb-4"></i>
                                 <input type="text" name="partOfSpeech" placeholder="Part of Speech" class="mb-4 p-3 w-100">
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-align-left fa-2x me-2 mb-4"></i>
+                                <textarea type="text" name="sentence" placeholder="Sentence" class="mb-4 p-3 w-100"></textarea>
                             </div>
                             
                             <div class="d-flex align-items-center">
