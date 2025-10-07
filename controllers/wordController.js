@@ -69,22 +69,21 @@ export async function getWordsPage(req, res) {
 }
 
 export async function createWord(req, res) {
-  const category = await Category.findOne({
-    _id: req.body.category,
-    user: req.session.userID,
-  });
-
-  const word = await Word.create({
-    word: req.body.word,
-    meaning: req.body.meaning,
-    partOfSpeech: req.body.partOfSpeech,
-    phonetics: req.body.phonetics,
-    sentence: req.body.sentence,
-    category: category.id,
-    user: req.session.userID,
-  });
-
   try {
+    const category = await Category.findOne({
+      _id: req.body.category,
+      user: req.session.userID,
+    });
+
+    const word = await Word.create({
+      word: req.body.word,
+      meaning: req.body.meaning,
+      partOfSpeech: req.body.partOfSpeech,
+      phonetics: req.body.phonetics,
+      sentence: req.body.sentence,
+      category: category.id,
+      user: req.session.userID,
+    });
     res.status(201).redirect('/words');
   } catch (err) {
     res.status(400).json({
