@@ -36,24 +36,7 @@
                                     <% } %>
                                 </li>
 
-                                <!-- Edit Category Modal -->
-                                <div class="modal fade" id="editCategoryModal-<%= categories[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content p-3">
-                                            <div class="modal-body p-3">
-                                                <form method="POST" action="/words/editCategory/<%= categories[i]._id %>?_method=PUT">
-                                                    <div class="d-flex flex-column justify-content-center p-3">
-                                                    <input type="text" value="<%= categories[i].name %>" name="name" placeholder="Category" class="mb-4 p-3">
-                                                    </div>
-                                                    <div>
-                                                        <button type="submit" class="btn btn-warning rounded-0">UPDATE</button>
-                                                        <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>     
-                                    </div>
-                                </div>
+                                <!-- modal was here -->
                                     
                                 <% } %>
                                 <hr>
@@ -64,6 +47,29 @@
                                 </li>
                                 <li class="d-flex align-items-center px-2 categoryEditHeadBtn"><a class="dropdown-item justify-content-center no-close" href=""><i class="fa-solid fa-sliders"></i> Edit</a></li>
                             </ul>
+
+                             <!-- Edit Category Modal -->
+                            <% for(let i=0; i< categories.length; i++) { %>
+                                <% if(categories[i].name !== 'Uncategorized') { %>
+                            <div class="modal fade" id="editCategoryModal-<%= categories[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-3">
+                                        <div class="modal-body p-3">
+                                            <form method="POST" action="/words/editCategory/<%= categories[i]._id %>?_method=PUT">
+                                                <div class="d-flex flex-column justify-content-center p-3">
+                                                <input type="text" value="<%= categories[i].name %>" name="name" placeholder="Category" class="mb-4 p-3">
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-warning rounded-0">UPDATE</button>
+                                                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>     
+                                </div>
+                            </div>
+                                <% } %>
+                            <% } %>
                         </div>
 
                         <form method="GET" action="/words" class="align-items-center d-flex rounded-start-1 rounded-end-0">
