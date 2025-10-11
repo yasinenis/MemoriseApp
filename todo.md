@@ -34,8 +34,10 @@
 #### general
 - [ ]  responsible design for mobile
 - [ ]  logo design
-- [ ]  error / info notifications
+- [ ]  notifications error / info
+  - [ ] auth redirect middleware notifications
 - [ ]  while writing inputs, placeholder or etc will slide up.
 - [ ]  admin panel
+- [ ]  hide some navigation items if user sign out.
 
 
