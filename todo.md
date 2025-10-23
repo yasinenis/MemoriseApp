@@ -39,5 +39,7 @@
 - [ ]  while writing inputs, placeholder or etc will slide up.
 - [ ]  admin panel
 - [ ]  hide some navigation items if user sign out.
+- [ ]  change the hero banner.
 
-
+#### utilities
+- [ ] add picture & show picture functionalities.

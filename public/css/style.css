@@ -70,25 +70,25 @@
 }
 
 .btn-collapse-red:hover { 
-  color: #EF4444; 
-  border-color: #EF4444; 
+  color: #10B981; 
+  border-color: #10B981; 
 }
 
 .btn-collapse-register {
-    border: 1px solid #F97316;
+    border: 1px solid #10B981;
     padding: 5px;
     border-radius: 5px;
-    background-color: #F97316;
-    border-color: #F97316;
+    background-color: #10B981;
+    border-color: #10B981;
     color: #1f2937;
 }
 
 .btn-collapse-register:hover {
-    border: 1px solid #F97316;
+    border: 1px solid #27c993;
     padding: 5px;
     border-radius: 5px;
-    background-color: #F97316;
-    border-color: #F97316;
+    background-color: #27c993;
+    border-color: #27c993;
     color: #1f2937;
 }
 
@@ -150,6 +150,7 @@ nav {
     padding: 6px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    min-width: 99%;
 }
 
 .search-bar:focus {
